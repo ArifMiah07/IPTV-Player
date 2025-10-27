@@ -1,0 +1,39 @@
+<svg width="252" height="240" viewBox="0 0 252 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_dddi_9_9)">
+<path d="M125.735 0L154.473 88.4458H247.471L172.234 143.108L200.972 231.554L125.735 176.892L50.4988 231.554L79.2366 143.108L4.00011 88.4458H96.9976L125.735 0Z" fill="url(#paint0_radial_9_9)"/>
+</g>
+<defs>
+<filter id="filter0_dddi_9_9" x="0" y="0" width="251.471" height="239.554" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_9_9"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="effect1_dropShadow_9_9" result="effect2_dropShadow_9_9"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="effect2_dropShadow_9_9" result="effect3_dropShadow_9_9"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect3_dropShadow_9_9" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="12"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect4_innerShadow_9_9"/>
+</filter>
+<radialGradient id="paint0_radial_9_9" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(125.735 128) rotate(90) scale(128)">
+<stop stop-color="#FC06AE"/>
+<stop offset="1" stop-color="#A200FF"/>
+</radialGradient>
+</defs>
+</svg>
