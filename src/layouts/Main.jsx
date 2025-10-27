@@ -1,5 +1,8 @@
-import LandingPage from "../pages/landing/LandingPage";
-
-export default function MainLayout() {
-  return <LandingPage />;
+export default function MainLayout({ children }) {
+  return (
+    <div>
+      {/* common layout */}
+      {children}
+    </div>
+  );
 }

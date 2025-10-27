@@ -1,9 +1,12 @@
+import { Outlet } from "react-router-dom";
 import MainLayout from "./layouts/Main";
 
 function App() {
   return (
     <main className="">
-      <MainLayout />
+      <MainLayout>
+        <Outlet />
+      </MainLayout>
     </main>
   );
 }
