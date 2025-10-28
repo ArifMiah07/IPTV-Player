@@ -1,9 +1,11 @@
-import LandingPageFrame from "../../components/landing/LandingPageFrame";
+import LandingPageBase from "../../components/landing/LandingPageBase";
+// import LandingPageFrame from "../../components/landing/LandingPageFrame";
 
 export default function LandingPage() {
   return (
     <div className=" box-border mx-auto w-full h-full ">
-      <LandingPageFrame />
+      {/* <LandingPageFrame /> */}
+      <LandingPageBase />
     </div>
   );
 }
