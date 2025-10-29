@@ -1,6 +1,23 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "../shared/Navbar";
+import { useEffect, useState } from "react";
 
 export default function HomePage() {
+  const [scrollPositionY, setScrollPositionY] = useState(0);
+
+  // get scrollY position
+  useEffect(() => {
+    // handle
+    const handleScrollPosition = () => {
+      setScrollPositionY(window.scrollY);
+    };
+    console.log(window.scrollY);
+    // add
+    window.addEventListener("scroll", handleScrollPosition);
+    // cleanup
+    return () => window.removeEventListener("scroll", handleScrollPosition);
+  }, []);
+
   return (
     <section className="relative w-full h-full box-border  ">
       {/* header */}
@@ -8,7 +25,15 @@ export default function HomePage() {
       <div className="absolute top-0 left-0 w-full h-[60px] bg-[#00B3FF] blur-[300px] opacity-100 -z-10"></div>
 
       <header className="relative z-10 w-full  h-[60px]  lg:px-4 py-4">
-        <nav className="fixed">This is global nav bar</nav>
+        <nav
+          className={`w-full z-2  fixed flex items-center justify-center  ${
+            scrollPositionY >= 100
+              ? " transition-all delay-75 ease-in duration-150 w-full top-0 right-0 items-center justify-center"
+              : " transition-all delay-75 ease-out duration-200 top-0 right-0  w-full h-fit   "
+          }`}>
+          {" "}
+          <Navbar scrollPositionY={scrollPositionY} />{" "}
+        </nav>
       </header>
       {/* main content */}
       <main className=" relative w-full h-full min-h-[calc(200vh-60px)] grid grid-cols-12 ">
@@ -19,16 +44,7 @@ export default function HomePage() {
         </section>
         {/* content */}
         <section className="col-span-11">
-          <p>
-            this is main content Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Consectetur est nulla quos doloribus ea?
-            Doloremque magnam molestiae, officiis quis praesentium possimus
-            debitis asperiores accusantium at sit deleniti provident quisquam,
-            itaque velit pariatur neque nulla, perferendis fuga necessitatibus
-            magni? Sunt animi facere possimus suscipit quia officiis quis
-            temporibus voluptas consequatur vero?
-          </p>
-          <p>this is main content</p>
+          <Outlet />
         </section>
       </main>
     </section>
