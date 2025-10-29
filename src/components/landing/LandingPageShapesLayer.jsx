@@ -2,7 +2,7 @@ import LandingPageFrame from "./LandingPageFrame";
 
 export default function LandingPageShapesLayer() {
   return (
-    <section className="relative isolate w-full h-screen  border overflow-visible  ">
+    <section className="relative isolate w-full h-screen overflow-visible  ">
       {/* svg container */}
       <div className="relative ">
         <div className="absolute z-10 top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/12  ">

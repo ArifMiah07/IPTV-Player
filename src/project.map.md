@@ -7,6 +7,14 @@
  *** /src
  *** *** /assets
  *** *** /components
+ *** *** *** /landing
+ *** *** *** *** LandingPageBackgroundLayer.jsx
+ *** *** *** *** LandingPageBase.jsx
+ *** *** *** *** LandingPageFrame.jsx
+ *** *** *** *** LandingPageShapesLayer.jsx
+ *** *** *** *** ...
+ *** *** *** *** ...
+ *** *** *** *** ...
  *** *** /contexts
  *** *** /hooks
  *** *** /layouts
