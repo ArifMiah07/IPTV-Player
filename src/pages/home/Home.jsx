@@ -45,16 +45,16 @@ export default function HomePage() {
       <main className=" relative w-full h-full min-h-[calc(200vh-60px)] grid grid-cols-12 ">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#ff00ff_0%,#ff00ff_50%,#ffffff_100%)] blur-[300px] opacity-10 -z-10"></div>
         {/* sidebar */}
-        <section className=" border col-span-1  ">
+        <section className=" col-span-1  ">
           <div></div>
         </section>
         {/* content */}
-        <section className=" border col-span-10">
+        <section className=" col-span-10">
           {isBaseHome && <FeaturesPage />}
           <Outlet />
         </section>
         {/* right sidebar */}
-        <section className=" border col-span-1  ">
+        <section className=" col-span-1  ">
           <div></div>
         </section>
       </main>

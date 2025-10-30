@@ -1,19 +1,22 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 export default function Navbar({ scrollPositionY }) {
-  const user = true;
   // states
   const [isDark, setIsDark] = useState(true);
   // functionalities
   function handleToggleTheme() {
     setIsDark(!isDark);
   }
+  const user = true;
   const isAdmin = true;
 
-  console.log(scrollPositionY);
+  const navLinkStyles = ({ isActive }) => ({
+    borderBottom: isActive ? "2px solid #A100FF" : "2px solid transparent",
+    transition: "border-color 0.3s ease, border-bottom-width 0.3s ease",
+  });
 
   return (
     // This is Navigation bar
@@ -39,40 +42,40 @@ export default function Navbar({ scrollPositionY }) {
           scrollPositionY >= 100 ? " w-full  justify-end" : ""
         }`}>
         <ul className="flex flex-row items-center gap-6 ">
-          <li>
-            <Link to={`/home`}>
+          <li className={" "}>
+            <NavLink style={navLinkStyles} to={`/home`} end>
               <span>Home</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={`/home/iptv-player/streams`}>
+            <NavLink style={navLinkStyles} to={`/home/iptv-player/streams`}>
               <span>Streams</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={`/home/iptv-player/channels`}>
+            <NavLink style={navLinkStyles} to={`/home/iptv-player/channels`}>
               <span>Channels</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={`/home/iptv-player/saved`}>
+            <NavLink style={navLinkStyles} to={`/home/iptv-player/saved`}>
               <span>Saved</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={`/home/iptv-player/player`}>
+            <NavLink style={navLinkStyles} to={`/home/iptv-player/player`}>
               <span>Player</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to={`/home/iptv-player/library`}>
+            <NavLink style={navLinkStyles} to={`/home/iptv-player/library`}>
               <span>Library</span>
-            </Link>
+            </NavLink>
           </li>
           <li className={`${scrollPositionY >= 100 ? "hidden" : ""}`}>
-            <Link to={`/home/iptv-player/about`}>
+            <NavLink style={navLinkStyles} to={`/home/iptv-player/about`}>
               <span>About</span>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -88,12 +91,12 @@ export default function Navbar({ scrollPositionY }) {
             </Link>
           </li>
           <li>
-            <Link to={`/home/iptv-player/profile`}>
+            <NavLink style={navLinkStyles} to={`/home/iptv-player/profile`}>
               <span>Profile</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-              <span>Signout</span>
+            <span>Signout</span>
             {/* <Link to={`/signout`}>
             </Link> */}
           </li>

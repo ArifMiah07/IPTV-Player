@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 @import "tailwindcss";
 
@@ -10,36 +10,96 @@
 
   color: #0f0f0f;
   background-color: #f6f6f6;
-  --primary-color: #ff0062;
 
   font-synthesis: none;
-  --primary-font: "Inter", sans-serif;
-  --secondary-font: "Roboto", sans-serif;
-  --extra-font: "Montserrat", sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  /* colors */
+  --primary-color: #ff0062;
+  /* font family */
+  --primary-font: "Inter", sans-serif;
+  --secondary-font: "Roboto", sans-serif;
+  --extra-font: "Montserrat", sans-serif;
+  /* custom buttons */
+  /* header > navbar */
+  --primary-color-link-btn: #fff;
+  --secondary-color-link-btn: #000;
+  --primary-border-radius-link-btn: 4px;
+  --primary-padding-link-btn: 4px 12px;
+  --primary-font-size-link-btn: 16px;
+  --primary-background-color-nav-link-btn: #fc06ae;
+  --primary-background-color-active-link-btn: #0648fc;
+  --primary-background-color-extra-link-btn: #f600ff;
+  --primary-background-color-unique-link-btn: #0cf8e9;
+  --primary-drop-shadow-link-btn: 0 4px 4px rgba(0, 0, 0, 0.19);
+  --primary-inner-shadow-link-btn: inset 0 4px 44px rgba(0, 0, 0, 0.8);
+  --primary-box-shadow: var(--primary-drop-shadow-link-btn), var(--primary-inner-shadow-link-btn);
+  /* across pages > call for action */
+  --primary-color-cta-btn: #fff;
+  --secondary-color-cta-btn: #000;
+  --primary-drop-shadow-cta-btn: 0 4px 4px rgba(0, 0, 0, 0.19);
+  --primary-inner-shadow-cta-btn: inset 0 4px 44px rgba(0, 0, 0, 0.8);
+
 }
 
-.inter{
+.inter {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
 }
-.roboto{
-    font-family: "Roboto", sans-serif;
+.roboto {
+  font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
 }
-.montserrat{
-    font-family: "Montserrat", sans-serif;
+.montserrat {
+  font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
 }
 
-body{
-	font-family: var(--extra-font);
+body {
+  font-family: var(--extra-font);
 }
 
-
+/* component styles */
+/* header ? navbar */
+.link-btn {
+  color: var(--primary-color-link-btn);
+  border-radius: var(--primary-border-radius-link-btn);
+  padding: var(--primary-padding-link-btn);
+  box-shadow: var(--primary-box-shadow);
+  font-size: var(--primary-font-size-link-btn);
+}
+.nav-link-btn {
+  /*  */
+  background: var(--primary-background-color-nav-link-btn);
+}
+.active-link-btn {
+  /*  */
+  background: var(--primary-background-color-active-link-btn);
+}
+.extra-link-btn {
+  /*  */
+  background: var(--primary-background-color-extra-link-btn);
+}
+.unique-link-btn {
+  /*  */
+ background: var(--primary-background-color-unique-link-btn);
+}
+/* across pages > call for action */
+.atc-btn {
+  /*  */
+  color: #4d9f0c;
+}
+.softWhiteBtn {
+  /*  */
+  color: #4d9f0c;
+}
+.downloadNowBtn {
+  /*  */
+  color: #4d9f0c;
+}
 
 /*
 * ------------ 

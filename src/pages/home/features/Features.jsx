@@ -26,7 +26,7 @@ export default function FeaturesPage() {
             transition={{ duration: 0.8 }}
             className="w-full h-[54px] bg-[#D9D9D933] p-5 backdrop-blur-xs flex ">
             <h1 className="text-[#000000B3] text-[16px] font-semibold">
-              Welcome To IPTV Player 
+              Welcome To IPTV Player
             </h1>
           </motion.div>
         )}
