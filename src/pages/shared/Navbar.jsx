@@ -45,32 +45,32 @@ export default function Navbar({ scrollPositionY }) {
             </Link>
           </li>
           <li>
-            <Link to={`/streams`}>
+            <Link to={`/home/iptv-player/streams`}>
               <span>Streams</span>
             </Link>
           </li>
           <li>
-            <Link to={`/channels`}>
+            <Link to={`/home/iptv-player/channels`}>
               <span>Channels</span>
             </Link>
           </li>
           <li>
-            <Link to={`/saved`}>
+            <Link to={`/home/iptv-player/saved`}>
               <span>Saved</span>
             </Link>
           </li>
           <li>
-            <Link to={`/player`}>
+            <Link to={`/home/iptv-player/player`}>
               <span>Player</span>
             </Link>
           </li>
           <li>
-            <Link to={`/library`}>
+            <Link to={`/home/iptv-player/library`}>
               <span>Library</span>
             </Link>
           </li>
           <li className={`${scrollPositionY >= 100 ? "hidden" : ""}`}>
-            <Link to={`/about`}>
+            <Link to={`/home/iptv-player/about`}>
               <span>About</span>
             </Link>
           </li>
@@ -88,14 +88,14 @@ export default function Navbar({ scrollPositionY }) {
             </Link>
           </li>
           <li>
-            <Link to={`/profile`}>
+            <Link to={`/home/iptv-player/profile`}>
               <span>Profile</span>
             </Link>
           </li>
           <li>
-            <Link to={`/signout`}>
               <span>Signout</span>
-            </Link>
+            {/* <Link to={`/signout`}>
+            </Link> */}
           </li>
         </ul>
       </div>

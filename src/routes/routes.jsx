@@ -41,11 +41,11 @@ const router = createHashRouter([
               },
               {
                 path: "library",
-                element: <div>This is about page</div>,
+                element: <div>This is library page</div>,
               },
               {
                 path: "profile",
-                element: <div>This is library page</div>,
+                element: <div>This is profile page</div>,
               },
               {
                 path: "about",

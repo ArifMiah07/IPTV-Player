@@ -1,9 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../shared/Navbar";
 import { useEffect, useState } from "react";
+import FeaturesPage from "./features/Features";
 
 export default function HomePage() {
   const [scrollPositionY, setScrollPositionY] = useState(0);
+  const location = useLocation();
+
+  const isBaseHome = location.pathname === "/home";
+
+  console.log(location, isBaseHome);
 
   // get scrollY position
   useEffect(() => {
@@ -39,12 +45,17 @@ export default function HomePage() {
       <main className=" relative w-full h-full min-h-[calc(200vh-60px)] grid grid-cols-12 ">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#ff00ff_0%,#ff00ff_50%,#ffffff_100%)] blur-[300px] opacity-10 -z-10"></div>
         {/* sidebar */}
-        <section className="col-span-1  ">
-          <div>side</div>
+        <section className=" border col-span-1  ">
+          <div></div>
         </section>
         {/* content */}
-        <section className="col-span-11">
+        <section className=" border col-span-10">
+          {isBaseHome && <FeaturesPage />}
           <Outlet />
+        </section>
+        {/* right sidebar */}
+        <section className=" border col-span-1  ">
+          <div></div>
         </section>
       </main>
     </section>

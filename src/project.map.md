@@ -1,12 +1,17 @@
 <!-- /project.map.md/ -->
+
 ```ts
 /** IPTV Player Client
- *** /.vscode 
+ *** /.vscode
  *** /node_modules
  *** /public
  *** /src
  *** *** /assets
  *** *** /components
+ *** *** *** /features
+ *** *** *** ***
+ *** *** *** ***
+ *** *** *** *** ...
  *** *** *** /landing
  *** *** *** *** LandingPageBackgroundLayer.jsx
  *** *** *** *** LandingPageBase.jsx
@@ -25,7 +30,16 @@
  *** *** *** /channels
  *** *** *** *** Channels.jsx
  *** *** *** *** ...
+ *** *** *** /dashboard
+ *** *** *** *** /user-dashboard
+ *** *** *** *** *** UserDashboard
+ *** *** *** *** /admin-dashboard
+ *** *** *** *** *** AdminDashboard
+ *** *** *** *** Dashboard.jsx
+ *** *** *** *** ...
  *** *** *** /home
+ *** *** *** *** *** /features
+ *** *** *** *** *** *** Features.jsx
  *** *** *** *** Home.jsx
  *** *** *** *** ...
  *** *** *** /iptv-player
@@ -41,6 +55,8 @@
  *** *** *** *** Player.jsx
  *** *** *** *** ...
  *** *** *** /shared
+ *** *** *** *** Navbar.jsx
+ *** *** *** *** ...
  *** *** *** ...
  *** *** /routes
  *** *** *** routes.jsx
@@ -53,18 +69,14 @@
  *** *** ...
  *** /src-tauri
  *** .gitignore
- *** index.html 
- *** package-lock.json 
- *** package.json 
- *** readme.md 
- *** vite.config.js 
+ *** index.html
+ *** package-lock.json
+ *** package.json
+ *** readme.md
+ *** vite.config.js
  *** ...
- * ...  
+ * ...
  */
-
-
-
-
-
 ```
+
 <!-- // -->
