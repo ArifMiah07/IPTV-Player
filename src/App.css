@@ -36,13 +36,13 @@
   --primary-background-color-unique-link-btn: #0cf8e9;
   --primary-drop-shadow-link-btn: 0 4px 4px rgba(0, 0, 0, 0.19);
   --primary-inner-shadow-link-btn: inset 0 4px 44px rgba(0, 0, 0, 0.8);
-  --primary-box-shadow: var(--primary-drop-shadow-link-btn), var(--primary-inner-shadow-link-btn);
+  --primary-box-shadow: var(--primary-drop-shadow-link-btn),
+    var(--primary-inner-shadow-link-btn);
   /* across pages > call for action */
   --primary-color-cta-btn: #fff;
   --secondary-color-cta-btn: #000;
   --primary-drop-shadow-cta-btn: 0 4px 4px rgba(0, 0, 0, 0.19);
   --primary-inner-shadow-cta-btn: inset 0 4px 44px rgba(0, 0, 0, 0.8);
-
 }
 
 .inter {
@@ -85,7 +85,7 @@ body {
 }
 .unique-link-btn {
   /*  */
- background: var(--primary-background-color-unique-link-btn);
+  background: var(--primary-background-color-unique-link-btn);
 }
 /* across pages > call for action */
 .atc-btn {
@@ -135,8 +135,6 @@ body {
     radial-gradient(ellipse at bottom, #4d9f0c, transparent);
 }
 
-
-
 /* make tools */
 /* tooltips */
 /* src ---> w3school.com */
@@ -144,7 +142,7 @@ body {
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black; /* Add dots under the hoverable text */
+  border-bottom: 1px solid black; /* Add dots under the hoverable text */
   cursor: pointer;
 }
 
@@ -157,10 +155,10 @@ body {
   text-align: center;
   padding: 2px 6px;
   border-radius: 6px;
-  position: absolute;
-  top: 24px;
-  right: 0%;
-  z-index: 111; /* Ensure tooltip is displayed above content */
+  top: 0px;
+  right: 0px;
+  position: fixed; /* or move tooltip outside */
+  z-index: 9999; /* Ensure tooltip is displayed above content */
 }
 
 /* Show the tooltip text on hover */

@@ -7,6 +7,13 @@ import { motion, AnimatePresence } from "motion/react";
 export default function FeaturesPage() {
   const [showWelcome, setShowWelcome] = useState(true);
 
+  const [isSectionClose, setIsSectionClose] = useState(false);
+  const handleSectionVisibility = () => {
+    console.log("clicked");
+    setIsSectionClose(!isSectionClose);
+  };
+  console.log(isSectionClose);
+
   // Hide the welcome message after 3 seconds
   useEffect(() => {
     const timer = setTimeout(() => setShowWelcome(false), 3000);
@@ -32,9 +39,27 @@ export default function FeaturesPage() {
         )}
       </AnimatePresence>
       {/* features */}
-      <div className="w-full h-[300px]   bg-[#D9D9D933] p-5 backdrop-blur-xs ">
-        <WatchLiveStreams></WatchLiveStreams>
+      <div
+        className={`w-full h-[300px] ${
+          isSectionClose ? "hidden" : ""
+        }   bg-[#D9D9D933] p-5 backdrop-blur-xs `}>
+        <WatchLiveStreams
+          handleSectionVisibility={handleSectionVisibility}></WatchLiveStreams>
       </div>
+      {isSectionClose && (
+        <div
+          className={`w-full h-[30px] bg-[#D9D9D933] flex flex-row items-center justify-start p-5 backdrop-blur-xs `}>
+          <button
+            className="cursor-pointer  "
+            onClick={() => setIsSectionClose(!isSectionClose)}>
+            <span className="tooltip">
+              <p className="tooltiptext text-sm">Show Complete Section</p>
+              Watch Live Streams
+            </span>
+          </button>
+        </div>
+      )}
+
       <div className="w-full h-[300px]   bg-[#D9D9D933] p-5 backdrop-blur-xs ">
         <PlayAndDownloadVideo></PlayAndDownloadVideo>{" "}
       </div>
