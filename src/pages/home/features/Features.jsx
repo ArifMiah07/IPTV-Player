@@ -3,16 +3,33 @@ import { useEffect, useState } from "react";
 import PlayAndDownloadVideo from "../../../components/features/PlayAndDownloadVideo";
 import WatchLiveStreams from "../../../components/features/WatchLiveStreams";
 import { motion, AnimatePresence } from "motion/react";
+import GetOurApp from "../../../components/features/GetOurApp";
 
 export default function FeaturesPage() {
   const [showWelcome, setShowWelcome] = useState(true);
-
   const [isSectionClose, setIsSectionClose] = useState(false);
+  const [
+    isDownloadAndPlayVideoSectionClose,
+    setIsDownloadAndPlayVideoSectionClose,
+  ] = useState(false);
+  const [isGetAppSectionClose, setIsGetAppSectionClose] = useState(false);
+
+  // lunch app
   const handleSectionVisibility = () => {
     console.log("clicked");
     setIsSectionClose(!isSectionClose);
   };
-  console.log(isSectionClose);
+  // play and download
+  const handleDownloadAndPlayVideoSectionVisibility = () => {
+    console.log("clicked");
+    setIsDownloadAndPlayVideoSectionClose(!isDownloadAndPlayVideoSectionClose);
+  };
+  // get app
+  const handleGetAppSectionVisibility = () => {
+    console.log("clicked");
+    setIsGetAppSectionClose(!isGetAppSectionClose);
+  };
+  // console.log(isDownloadAndPlayVideoSectionClose);
 
   // Hide the welcome message after 3 seconds
   useEffect(() => {
@@ -39,8 +56,9 @@ export default function FeaturesPage() {
         )}
       </AnimatePresence>
       {/* features */}
+      {/* lunch iptv player */}
       <div
-        className={`w-full h-[300px] ${
+        className={`w-full h-[300px] border border-[#A100FF] shadow-sm hover:drop-shadow-sm ${
           isSectionClose ? "hidden" : ""
         }   bg-[#D9D9D933] p-5 backdrop-blur-xs `}>
         <WatchLiveStreams
@@ -48,7 +66,7 @@ export default function FeaturesPage() {
       </div>
       {isSectionClose && (
         <div
-          className={`w-full h-[30px] bg-[#D9D9D933] flex flex-row items-center justify-start p-5 backdrop-blur-xs `}>
+          className={`w-full h-[30px] bg-[#D9D9D933] border border-[#A100FF] shadow-sm hover:drop-shadow-sm flex flex-row items-center justify-start p-5 backdrop-blur-xs `}>
           <button
             className="cursor-pointer  "
             onClick={() => setIsSectionClose(!isSectionClose)}>
@@ -59,10 +77,61 @@ export default function FeaturesPage() {
           </button>
         </div>
       )}
-
-      <div className="w-full h-[300px]   bg-[#D9D9D933] p-5 backdrop-blur-xs ">
-        <PlayAndDownloadVideo></PlayAndDownloadVideo>{" "}
+      {/* downloads and video play */}
+      <div
+        className={`w-full h-[300px] border border-[#A100FF] shadow-sm hover:drop-shadow-sm ${
+          isDownloadAndPlayVideoSectionClose ? "hidden" : ""
+        }   bg-[#D9D9D933] p-5 backdrop-blur-xs `}>
+        <PlayAndDownloadVideo
+          handleDownloadAndPlayVideoSectionVisibility={
+            handleDownloadAndPlayVideoSectionVisibility
+          }></PlayAndDownloadVideo>{" "}
       </div>
+      {isDownloadAndPlayVideoSectionClose && (
+        <div
+          className={`w-full h-[30px] bg-[#D9D9D933] border border-[#A100FF] shadow-sm hover:drop-shadow-sm flex flex-row items-center justify-start p-5 backdrop-blur-xs `}>
+          <button
+            className="cursor-pointer  "
+            onClick={() =>
+              setIsDownloadAndPlayVideoSectionClose(
+                !isDownloadAndPlayVideoSectionClose
+              )
+            }>
+            <span className="tooltip">
+              <p className="tooltiptext text-sm">Show Complete Section</p>
+              Play and Download Videos
+            </span>
+          </button>
+        </div>
+      )}
+
+      {/* Get our apk on PC and Mobile  */}
+      <div
+        className={`w-full h-[300px] border border-[#A100FF] shadow-sm hover:drop-shadow-sm ${
+          isGetAppSectionClose ? "hidden" : ""
+        }   bg-[#D9D9D933] p-5 backdrop-blur-xs `}>
+        <GetOurApp
+          handleGetAppSectionVisibility={
+            handleGetAppSectionVisibility
+          }></GetOurApp>{" "}
+      </div>
+      {isGetAppSectionClose && (
+        <div
+          className={`w-full h-[30px] bg-[#D9D9D933] border border-[#A100FF] shadow-sm hover:drop-shadow-sm flex flex-row items-center justify-start p-5 backdrop-blur-xs `}>
+          <button
+            className="cursor-pointer  "
+            onClick={() => setIsGetAppSectionClose(!isGetAppSectionClose)}>
+            <span className="tooltip">
+              <p className="tooltiptext text-sm">Show Complete Section</p>
+              Play and Download Videos
+            </span>
+          </button>
+        </div>
+      )}
+
+      {/* <div className="w-full h-[300px]   bg-[#D9D9D933] p-5 backdrop-blur-xs ">
+        <PlayAndDownloadVideo></PlayAndDownloadVideo>{" "}
+      </div> */}
     </section>
   );
 }
