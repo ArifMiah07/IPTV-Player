@@ -134,3 +134,36 @@ body {
   background: radial-gradient(ellipse at top, #e66465, transparent),
     radial-gradient(ellipse at bottom, #4d9f0c, transparent);
 }
+
+
+
+/* make tools */
+/* tooltips */
+/* src ---> w3school.com */
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* Add dots under the hoverable text */
+  cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden; /* Hidden by default */
+  width: fit;
+  background-color: black;
+  color: #ffffff;
+  text-align: center;
+  padding: 2px 6px;
+  border-radius: 6px;
+  position: absolute;
+  top: 24px;
+  right: 0%;
+  z-index: 111; /* Ensure tooltip is displayed above content */
+}
+
+/* Show the tooltip text on hover */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
