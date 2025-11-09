@@ -135,6 +135,24 @@ body {
     radial-gradient(ellipse at bottom, #4d9f0c, transparent);
 }
 
+/* 
+  Featured page
+*/
+
+/* watch bow button */
+.watch-now-btn {
+  box-shadow: -2px -2px 0px rgba(0, 128, 255, 0.44),
+    inset 0 12px 24px rgba(0, 0, 0, 0.88);
+  background-color: #225dc9;
+  color: #fff;
+}
+/* learn more button */
+.learn-more-btn {
+  box-shadow: 2px 2px 0px rgba(0, 128, 255, 0.44);
+  background-color: #fff;
+  color: #000;
+}
+
 /* make tools */
 /* tooltips */
 /* src ---> w3school.com */
@@ -156,7 +174,7 @@ body {
   padding: 2px 6px;
   border-radius: 6px;
   top: 0px;
-  right: 0px;
+  right: 20px;
   position: fixed; /* or move tooltip outside */
   z-index: 9999; /* Ensure tooltip is displayed above content */
 }

@@ -3,11 +3,13 @@ import image1 from "../../assets/black-white-tv.png";
 import image2 from "../../assets/wild-life-nature.jpg";
 import logo1 from "../../assets/universal_monsters_01.jpg";
 import logo2 from "../../assets/BBC_Earth_.svg";
+import { Link } from "react-router-dom";
 
 export default function WatchLiveStreams({ handleSectionVisibility }) {
   return (
     // TODO: make it responsive for other devices
-    <section className={` relative flex flex-col w-full h-full drop-shadow-md `}>
+    <section
+      className={` relative flex flex-col w-full h-full drop-shadow-md `}>
       {/* visibility state */}
       <div className="absolute top-0 right-0">
         <button
@@ -33,7 +35,7 @@ export default function WatchLiveStreams({ handleSectionVisibility }) {
             {/* image 1 - black adn white tv channels */}
             <div className="relative ">
               {/* show this as a tiny black filter */}
-              <div className="w-full h-full absolute bg-[rgba(255,255,255,0.1)]">
+              <div className="w-[300px] h-[140px] absolute bg-[rgba(0,0,0,0.3)]">
                 {/* black filter */}
               </div>
               <img
@@ -47,11 +49,11 @@ export default function WatchLiveStreams({ handleSectionVisibility }) {
               </div>
             </div>
             {/* image 2 - wild nature channel */}
-            <div className="absolute top-12 -right-54 w-full  ">
+            <div className="absolute top-12 -right-54 w-full pointer-events-none z-0">
               {/* wild nature image */}
               <div className="relative">
                 {/* show this as a tiny black filter */}
-                <div className="w-full h-full absolute bg-[rgba(255,255,255,0.1)]">
+                <div className="w-[300px] h-[140px] absolute bg-[rgba(255,255,255,0.1)]">
                   {/* black filter */}
                 </div>
                 <img
@@ -68,14 +70,29 @@ export default function WatchLiveStreams({ handleSectionVisibility }) {
           </div>
         </div>
         {/* heading */}
-        <div className=" w-full lg:w-[70%] h-full flex flex-col items-center py-4 gap-4   ">
-          <h1 className="text-3xl font-bold ">
+        <div className="w-full lg:w-[70%] h-full flex flex-col items-center relative z-10 ">
+          <h1 className=" text-3xl font-bold ">
             Stream 13,000+ Live <br />
             Channels Instantly
           </h1>
-          <div className="flex items-center gap-4">
-            <button>Watch Now</button>
-            <button>Learn More</button>
+          <p className=" text-[rgba(0,0,0,0.7)] max-w-md my-3">
+            Access sports, movies, news, and <br /> entertainment channels
+            worldwide — <br />
+            all in one seamless platform.
+          </p>
+          <div className=" flex flex-row items-center gap-4">
+            <Link to="/home/iptv-player/streams">
+              <button
+                className={`flex items-center justify-center cursor-pointer watch-now-btn px-3.5 py-1.5`}>
+                Learn More
+              </button>
+            </Link>
+            <Link to="/home/iptv-player/learn">
+              <button
+                className={`flex items-center justify-center cursor-pointer learn-more-btn px-3.5 py-1.5`}>
+                Learn More
+              </button>
+            </Link>
           </div>
         </div>
       </div>
