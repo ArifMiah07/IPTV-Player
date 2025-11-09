@@ -14,6 +14,7 @@ export default function FeaturesPage() {
     getApp: false,
   });
 
+  // 
   // generic toggle handler
   const toggleSection = (key) => {
     setSections((prev) => ({ ...prev, [key]: !prev[key] }));
