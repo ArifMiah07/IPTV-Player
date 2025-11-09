@@ -42,37 +42,40 @@ export default function Navbar({ scrollPositionY }) {
           scrollPositionY >= 100 ? " w-full  justify-end" : ""
         }`}>
         <ul className="flex flex-row items-center gap-6 ">
-          <li className={" "}>
+          <li className={" hover:text-[#A100FF] "}>
             <NavLink style={navLinkStyles} to={`/home`} end>
               <span>Home</span>
             </NavLink>
           </li>
-          <li>
+          <li className={" hover:text-[#A100FF] "}>
             <NavLink style={navLinkStyles} to={`/home/iptv-player/streams`}>
               <span>Streams</span>
             </NavLink>
           </li>
-          <li>
+          <li className={" hover:text-[#A100FF] "}>
             <NavLink style={navLinkStyles} to={`/home/iptv-player/channels`}>
               <span>Channels</span>
             </NavLink>
           </li>
-          <li>
+          <li className={" hover:text-[#A100FF] "}>
             <NavLink style={navLinkStyles} to={`/home/iptv-player/saved`}>
               <span>Saved</span>
             </NavLink>
           </li>
-          <li>
+          <li className={" hover:text-[#A100FF] "}>
             <NavLink style={navLinkStyles} to={`/home/iptv-player/player`}>
               <span>Player</span>
             </NavLink>
           </li>
-          <li>
+          <li className={" hover:text-[#A100FF] "}>
             <NavLink style={navLinkStyles} to={`/home/iptv-player/library`}>
               <span>Library</span>
             </NavLink>
           </li>
-          <li className={`${scrollPositionY >= 100 ? "hidden" : ""}`}>
+          <li
+            className={` hover:text-[#A100FF]  ${
+              scrollPositionY >= 100 ? "hidden" : ""
+            }`}>
             <NavLink style={navLinkStyles} to={`/home/iptv-player/about`}>
               <span>About</span>
             </NavLink>
@@ -85,17 +88,20 @@ export default function Navbar({ scrollPositionY }) {
           scrollPositionY >= 100 ? " w-full  justify-end" : ""
         }`}>
         <ul className="flex flex-row items-center gap-6 ">
-          <li className={`${scrollPositionY >= 100 ? "hidden" : ""}`}>
+          <li
+            className={` hover:text-[#A100FF] ${
+              scrollPositionY >= 100 ? "hidden" : ""
+            }`}>
             <Link to={`/dashboard`}>
               <span>Dashboard</span>
             </Link>
           </li>
-          <li>
+          <li className={" hover:text-[#A100FF] "}>
             <NavLink style={navLinkStyles} to={`/home/iptv-player/profile`}>
               <span>Profile</span>
             </NavLink>
           </li>
-          <li>
+          <li className={" hover:text-[#A100FF] "}>
             <span>Signout</span>
             {/* <Link to={`/signout`}>
             </Link> */}
