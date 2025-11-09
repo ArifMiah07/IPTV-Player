@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NavMenuButton } from "../buttons/CustomButtons";
 
 export default function PlayAndDownloadVideo({ handleSectionVisibility }) {
@@ -15,16 +16,30 @@ export default function PlayAndDownloadVideo({ handleSectionVisibility }) {
         Play and Download Videos
       </h1>
       {/* content */}
-      <div>
-        {/*  */}
-        <div className="my-4">
-          <NavMenuButton
-            label={"Lunch IPTV Now"}
-            styles={"link-btn active-link-btn "}></NavMenuButton>
+      {/* heading */}
+      <div className="w-full lg:w-[36%] h-full flex flex-col  relative z-10 ">
+        <p className=" text-[rgba(0,0,0,0.7)] max-w-md my-3">
+          Play Video From Mainstream Platforms <br />
+          And download video from Facebook, <br />
+          YouTube, Instagram, Twitter...
+        </p>
+        <div className=" flex flex-row items-center gap-4">
+          <Link to="/home/iptv-player/player">
+            <button
+              className={`flex items-center justify-center cursor-pointer play-now-btn px-3.5 py-1.5`}>
+              Play Now
+            </button>
+          </Link>
+          <Link to="/home/iptv-player/library">
+            <button
+              className={`flex items-center justify-center cursor-pointer download-now-btn px-3.5 py-1.5`}>
+              Download Now
+            </button>
+          </Link>
         </div>
-        {/*  */}
-        <div></div>
       </div>
+      {/* <div>
+      </div> */}
     </section>
   );
 }

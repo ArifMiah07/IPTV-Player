@@ -152,6 +152,16 @@ body {
   background-color: #fff;
   color: #000;
 }
+.play-now-btn {
+  box-shadow: -2px 2px 0px rgba(81, 0, 255, 0.25);
+  background-color: #fff;
+  color: #000;
+}
+.download-now-btn {
+  box-shadow: 2px -2px 0px rgba(173, 30, 255, 0.25);
+  background-color: #225DC9;
+  color: #fff;
+}
 
 /* make tools */
 /* tooltips */

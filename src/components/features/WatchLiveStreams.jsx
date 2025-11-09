@@ -80,11 +80,11 @@ export default function WatchLiveStreams({ handleSectionVisibility }) {
             worldwide — <br />
             all in one seamless platform.
           </p>
-          <div className=" flex flex-row items-center gap-4">
+          <div className=" w-full lg:w-[78%] h-fit flex flex-row  gap-4">
             <Link to="/home/iptv-player/streams">
               <button
                 className={`flex items-center justify-center cursor-pointer watch-now-btn px-3.5 py-1.5`}>
-                Learn More
+                Watch Now
               </button>
             </Link>
             <Link to="/home/iptv-player/learn">
