@@ -1,13 +1,11 @@
 import { NavMenuButton } from "../buttons/CustomButtons";
 
-export default function PlayAndDownloadVideo({
-  handleDownloadAndPlayVideoSectionVisibility,
-}) {
+export default function PlayAndDownloadVideo({ handleSectionVisibility }) {
   return (
     <section className={` relative flex flex-col w-full h-full `}>
       <div className="absolute top-0 right-0">
         <button
-          onClick={handleDownloadAndPlayVideoSectionVisibility}
+          onClick={handleSectionVisibility}
           className="cursor-pointer tooltip ">
           <p className="tooltiptext text-sm">Hide</p>X
         </button>

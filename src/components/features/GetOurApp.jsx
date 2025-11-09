@@ -1,11 +1,11 @@
 import { NavMenuButton } from "../buttons/CustomButtons";
 
-export default function GetOurApp({handleGetAppSectionVisibility}) {
+export default function GetOurApp({ handleSectionVisibility }) {
   return (
     <section className={` relative flex flex-col w-full h-full `}>
       <div className="absolute top-0 right-0">
         <button
-          onClick={handleGetAppSectionVisibility}
+          onClick={handleSectionVisibility}
           className="cursor-pointer tooltip ">
           <p className="tooltiptext text-sm">Hide</p>X
         </button>
