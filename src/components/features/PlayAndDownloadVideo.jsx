@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 // import { NavMenuButton } from "../buttons/CustomButtons";
 
-import logo1 from "../../assets/logo/facebook.png"
-import logo2 from "../../assets/logo/instagram.png"
-import logo3 from "../../assets/logo/tiktok.png"
-import logo4 from "../../assets/logo/twitch.png"
-import logo5 from "../../assets/logo/x.png"
-import logo6 from "../../assets/logo/youtube.png"
+import logo1 from "../../assets/logo/facebook.png";
+import logo2 from "../../assets/logo/instagram.png";
+import logo3 from "../../assets/logo/tiktok.png";
+import logo4 from "../../assets/logo/twitch.png";
+import logo5 from "../../assets/logo/x.png";
+import logo6 from "../../assets/logo/youtube.png";
+
+import { motion } from "motion/react";
 
 export default function PlayAndDownloadVideo({ handleSectionVisibility }) {
   return (
@@ -48,25 +50,73 @@ export default function PlayAndDownloadVideo({ handleSectionVisibility }) {
             </div>
           </div>
         </div>
-        <div className=" w-full h-full relative  ">
-          <div className="absolute top-10 right-6 ">
-            <img src={logo1} className="w-[50px] "  alt="" />
-          </div>
-          <div className="absolute top-40 left-4 ">
-            <img src={logo2} className="w-[50px] "  alt="" />
-          </div>
-          <div className="absolute top-10 left-6 ">
-            <img src={logo3} className="w-[50px] "  alt="" />
-          </div>
-          <div className="absolute top-16 left-48 ">
-            <img src={logo4} className="w-[50px] "  alt="" />
-          </div>
-          <div className="absolute top-32 right-64 ">
-            <img src={logo5} className="w-[50px] "  alt="" />
-          </div>
-          <div className="absolute top-40 right-6 ">
-            <img src={logo6} className="w-[50px] "  alt="" />
-          </div>
+        <div className=" w-full h-full relative mx-12 ">
+          <motion.div
+            initial={{ opacity: 0, scale: 0, rotate: 50 }}
+            animate={{
+              opacity: 1,
+              rotate: 360,
+              scale: 1.2,
+              transition: { duration: 3 },
+            }}
+            className="absolute top-10 right-6 ">
+            <img src={logo1} className="w-[50px] " alt="" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0, rotate: 50 }}
+            animate={{
+              opacity: 1,
+              rotate: 360,
+              scale: 1.2,
+              transition: { duration: 3 },
+            }}
+            className="absolute top-40 left-4 ">
+            <img src={logo2} className="w-[50px] " alt="" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0, rotate: 50 }}
+            animate={{
+              opacity: 1,
+              rotate: 360,
+              scale: 1.2,
+              transition: { duration: 3 },
+            }}
+            className="absolute top-10 left-6 ">
+            <img src={logo3} className="w-[50px] " alt="" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0, rotate: 50 }}
+            animate={{
+              opacity: 1,
+              rotate: 360,
+              scale: 1.2,
+              transition: { duration: 3 },
+            }}
+            className="absolute top-16 left-48 ">
+            <img src={logo4} className="w-[50px] " alt="" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0, rotate: 50 }}
+            animate={{
+              opacity: 1,
+              rotate: 360,
+              scale: 1.2,
+              transition: { duration: 3 },
+            }}
+            className="absolute top-32 right-64 ">
+            <img src={logo5} className="w-[50px] " alt="" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0, rotate: 50 }}
+            animate={{
+              opacity: 1,
+              rotate: 360,
+              scale: 1.2,
+              transition: { duration: 3 },
+            }}
+            className="absolute top-40 right-6 ">
+            <img src={logo6} className="w-[50px] " alt="" />
+          </motion.div>
         </div>
       </div>
     </section>
