@@ -52,13 +52,14 @@ export default function PlayAndDownloadVideo({ handleSectionVisibility }) {
         </div>
         <div className=" w-full h-full relative mx-12 ">
           <motion.div
-            initial={{ opacity: 0, scale: 0, rotate: 50 }}
+            initial={{ opacity: 0, scale: 0, rotate: 50, x: -100 }}
             animate={{
               opacity: 1,
               rotate: 360,
               scale: 1.2,
-              transition: { duration: 3 },
+              x: 0,
             }}
+            transition={{ duration: 3, type: "spring" }}
             className="absolute top-10 right-6 ">
             <img src={logo1} className="w-[50px] " alt="" />
           </motion.div>
