@@ -1,0 +1,7 @@
+DATE:22-11-25
+-------------
+src/pages/iptv-player/streams/Streams.jsx
+_________________________________________________
+[x] - fetch api from backend
+[x] - showing fetching data 
+[] - use api url in video player
