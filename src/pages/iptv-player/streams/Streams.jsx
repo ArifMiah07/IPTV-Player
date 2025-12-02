@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
+import ClockPage from "../../../components/clock/clock";
 
 //
 export default function StreamPage() {
@@ -45,10 +46,11 @@ export default function StreamPage() {
   return (
     // streams page component
     <div className="w-full h-full">
+      <ClockPage />
       <h1>this is IPTV Streaming page</h1>
-      <div className=" border border-red-500 flex flex-row gap-3 p-3 w-full"></div>
-      <div>
-        {streams.slice(0, 10).map((stream_item, stream_index) => (
+      {/* <div className=" border border-red-500 flex flex-row gap-3 p-3 w-full"></div> */}
+      <div className="p-4 border border-red-500">
+        {streams.slice(0, 1).map((stream_item, stream_index) => (
           <div
             className=" w-full h-full pa-2 border border-red-500"
             key={stream_index}>
@@ -63,6 +65,7 @@ export default function StreamPage() {
           </div>
         ))}
       </div>
+      {/*  */}
     </div>
   );
 }
