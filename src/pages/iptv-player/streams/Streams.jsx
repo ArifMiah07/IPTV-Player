@@ -9,6 +9,8 @@ export default function StreamPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // const [isReady, setIsReady] = useState(false)
+
   // react side effects
   // fetch streams api from backend
   useEffect(() => {
@@ -34,6 +36,8 @@ export default function StreamPage() {
     fetchStreams();
   }, []);
 
+  // console.log( "agagaga" ,ReactPlayer.canPlay("http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/659e598ab9adc4000843c574/master.m3u8"));
+
   if (loading) return <div>loading steams....</div>;
   if (error) return <div>Error:....{error}</div>;
 
@@ -48,20 +52,20 @@ export default function StreamPage() {
           <div
             className=" w-full h-full pa-2 border border-red-500"
             key={stream_index}>
-            <p>Stream index: {stream_index}</p>
+            {/* <p>Stream index: {stream_index}</p>
             <p>Stream title: {stream_item.title}</p>
             <p className=" w-full h-full flex flex-col items-start justify-start break-all">
               Stream url: {stream_item.url}
-            </p>
+            </p> */}
             <div className="border border-green-500  w-full h-full">
-              <ReactPlayer controls={true} src={stream_item.url} />
+              <ReactPlayer pip={true} controls={true} src={stream_item.url} />
             </div>
           </div>
         ))}
       </div>
-      <div className="border border-green-500  w-full h-full">
-        <ReactPlayer controls={true} src={"http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/659e598ab9adc4000843c574/master.m3u8"} />
-      </div>
     </div>
   );
 }
+
+
+// i was aiming to solve streaming cors issue in browser by adding a proxy server but after jumping few sites it feels like im too young ooo young for this.
