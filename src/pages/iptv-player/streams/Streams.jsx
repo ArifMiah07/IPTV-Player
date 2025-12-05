@@ -9,8 +9,7 @@ export default function StreamPage() {
   const [streams, setStreams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // const [isReady, setIsReady] = useState(false)
+  const [totalItems, setTotalItems] = useState(0 || null);
 
   // react side effects
   // fetch streams api from backend
@@ -22,6 +21,7 @@ export default function StreamPage() {
         const response = await axios.get(streams_api_url);
         console.log({ response });
         setStreams(response?.data?.data);
+        setTotalItems(response?.data?.length);
         setError(null); // clear previous error
       } catch (error) {
         //
@@ -37,16 +37,25 @@ export default function StreamPage() {
     fetchStreams();
   }, []);
 
-  // console.log( "agagaga" ,ReactPlayer.canPlay("http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/659e598ab9adc4000843c574/master.m3u8"));
+  // variables
+  // const totalItems = 50;
+  const itemsPerPage = 10;
+  const numbersOfPages = Math.abs(Math.round(totalItems / itemsPerPage));
+
+  // console
+  console.log(totalItems);
+  console.log(numbersOfPages);
+
+  // handle
 
   if (loading) return <div>loading steams....</div>;
   if (error) return <div>Error:....{error}</div>;
 
-  //
+  // return component
   return (
     // streams page component
     <div className="w-full h-full">
-      <ClockPage />
+      {/* <ClockPage /> */}
       <h1>this is IPTV Streaming page</h1>
       {/* <div className=" border border-red-500 flex flex-row gap-3 p-3 w-full"></div> */}
       <div className="p-4 border border-red-500">
@@ -65,10 +74,12 @@ export default function StreamPage() {
           </div>
         ))}
       </div>
-      {/*  */}
+      {/* pagination */}
+      {
+        
+      }
     </div>
   );
 }
-
 
 // i was aiming to solve streaming cors issue in browser by adding a proxy server but after jumping few sites it feels like im too young ooo young for this.
