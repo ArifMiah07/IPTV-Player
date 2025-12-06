@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import ClockPage from "../../../components/clock/clock";
+import { toast, Toaster } from "sonner";
 
 //
 export default function StreamPage() {
@@ -42,7 +43,7 @@ export default function StreamPage() {
   // variables
   // const allItems = totalItems;
   const itemsPerPage = 10;
-  const numbersOfPages = Math.abs(Math.round(totalItems / itemsPerPage));
+  const numbersOfPages = Math.abs(Math.round(totalItems / itemsPerPage)) + 1;
   const arr2 = Array.from({ length: numbersOfPages }, (_, i) => i + 1);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = currentPage * itemsPerPage;
@@ -56,10 +57,18 @@ export default function StreamPage() {
   // handle GotoPage
   const handleGotoPage = (e) => {
     e.preventDefault();
-    const pageNumber = Number(inputRange);
-    if (!isNaN(pageNumber) && pageNumber > 0) {
-      handleCurrentPage(pageNumber);
+    const pageNumber = Number(inputRange.trim());
+    if (isNaN(pageNumber)) {
+      toast.error(`plx enter a number between ${1} to ${numbersOfPages}`);
+      return;
     }
+    if (pageNumber < 1 || pageNumber > numbersOfPages) {
+      toast.error(`plx enter a number between ${1} to ${numbersOfPages}`);
+      return;
+    }
+    // if (!isNaN(pageNumber) && pageNumber > 0 && pageNumber <= numbersOfPages) {
+    // }
+    handleCurrentPage(pageNumber);
   };
 
   // console
@@ -68,6 +77,7 @@ export default function StreamPage() {
   // console.log(arr);
   console.log(arr2);
   console.log(currentPage);
+  console.log(isNaN(40));
 
   // error handling
 
@@ -82,6 +92,8 @@ export default function StreamPage() {
   return (
     // streams page component
     <div className="w-full h-full">
+      {/* toast */}
+      <Toaster richColors position="top-right" />
       {/* <ClockPage /> */}
       <h1>this is IPTV Streaming page</h1>
       <div className=" border border-red-500 flex flex-row gap-3 p-3 w-full">
@@ -95,34 +107,38 @@ export default function StreamPage() {
           <button
             onClick={() => setCurrentPage((prev) => prev + 1)}
             disabled={currentPage >= numbersOfPages}
-            className="text-lg font-md bg-green-400 px-4 py-2 rounded-sm">
+            className={`text-lg font-md  px-4 py-2 rounded-sm ${
+              currentPage >= numbersOfPages ? "bg-gray-400" : "bg-green-400"
+            } `}>
             Next Page
           </button>
           {/* previous page btn */}
           <button
             onClick={() => setCurrentPage((prev) => prev - 1)}
             disabled={currentPage <= 1}
-            className="text-lg font-md bg-green-400 px-4 py-2 rounded-sm">
+            className={`text-lg font-md px-4 py-2 rounded-sm ${
+              currentPage <= 1 ? "bg-gray-400 " : "bg-green-400 "
+            } `}>
             Previous Page
           </button>
           {/* handle go to a specific page with user input */}
           <div className="text-lg font-md bg-green-400 px-4 py-2 rounded-sm">
             {/* form */}
-            <form onSubmit={handleGotoPage} className=""></form>
-            {/* take input */}
-            <input
-              className="outline-0"
-              // value={currentPage}
-              onSubmit={(e) => setInputRang(e.target.value)}
-              defaultValue={currentPage}
-              placeholder="Go to a page"
-              type="number"
-              min={1}
-            />
-            {/* go to btn */}
-            <button type="submit" className="">
-              Go
-            </button>
+            <form onSubmit={handleGotoPage} className="">
+              {/* take input */}
+              <input
+                className="outline-0"
+                value={inputRange}
+                onChange={(e) => setInputRang(e.target.value)}
+                placeholder="Go to a page"
+                type="text"
+                min={1}
+              />
+              {/* go to btn */}
+              <button type="submit" className="outline-0 ">
+                Go
+              </button>
+            </form>
           </div>
         </div>
       </div>
