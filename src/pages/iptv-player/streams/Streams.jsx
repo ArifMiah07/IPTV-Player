@@ -42,14 +42,13 @@ export default function StreamPage() {
   // const allItems = totalItems;
   const itemsPerPage = 10;
   const numbersOfPages = Math.abs(Math.round(totalItems / itemsPerPage));
-  // const arr = Array(numbersOfPages).fill(numbersOfPages);
   const arr2 = Array.from({ length: numbersOfPages }, (_, i) => i + 1);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = currentPage * itemsPerPage;
 
   // handler functions
   // handle current page
   const handleCurrentPage = (a) => {
-    //
-    console.log(a);
     setCurrentPage(a);
   };
 
@@ -65,28 +64,53 @@ export default function StreamPage() {
   if (loading) return <div>loading steams....</div>;
   if (error) return <div>Error:....{error}</div>;
 
+  // TODO:
+  // 1. make it responsive later
+  //
+
   // return component
   return (
     // streams page component
     <div className="w-full h-full">
       {/* <ClockPage /> */}
       <h1>this is IPTV Streaming page</h1>
-      {/* <div className=" border border-red-500 flex flex-row gap-3 p-3 w-full"></div> */}
-      <div className="p-4 border border-red-500">
-        {streams.slice(0, 1).map((stream_item, stream_index) => (
-          <div
-            className=" w-full h-full pa-2 border border-red-500"
-            key={stream_index}>
-            {/* <p>Stream index: {stream_index}</p>
+      <div className=" border border-red-500 flex flex-row gap-3 p-3 w-full">
+        <div>
+          <p className={`text-lg font-black `}>{currentPage}</p>
+        </div>
+      </div>
+      <div className="w-full h-full flex flex-col lg:grid lg:grid-cols-5 border-4 border-blue-500 ">
+        <div className=" w-full h-full col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 items-center justify-items-center gap-4 p-4 border-4 border-teal-500">
+          {streams
+            .slice(startIndex, endIndex)
+            .map((stream_item, stream_index) => (
+              <div
+                className=" w-full h-full flex flex-col items-center justify-center border border-red-500"
+                key={stream_index}>
+                {/* <p>Stream index: {stream_index}</p>
             <p>Stream title: {stream_item.title}</p>
             <p className=" w-full h-full flex flex-col items-start justify-start break-all">
               Stream url: {stream_item.url}
             </p> */}
-            <div className="border border-green-500  w-full h-full">
-              <ReactPlayer pip={true} controls={true} src={stream_item.url} />
-            </div>
-          </div>
-        ))}
+                <div className="flex flex-col items-center justify-center border border-green-500  w-full h-full">
+                  <ReactPlayer
+                    // pip={true}
+                    controls={true}
+                    src={stream_item.url}
+                  />
+                </div>
+              </div>
+            ))}
+        </div>
+        {/* sidebar */}
+        <div className=" lg:col-span-1 border-2 border-green-400  ">
+          side bar
+        </div>
+      </div>
+      <div className=" border border-red-500 flex flex-row gap-3 p-3 w-full">
+        <div>
+          <p className="text-lg font-black">{currentPage}</p>
+        </div>
       </div>
       {/* pagination */}
       <div className="w-full h-full">
@@ -95,7 +119,9 @@ export default function StreamPage() {
             <button
               onClick={() => handleCurrentPage(a)}
               key={i}
-              className=" border border-red-500  py-2 px-3 ">
+              className={` border border-red-500  py-2 px-3 ${
+                a === currentPage ? "bg-green-500" : ""
+              }  `}>
               {a}
             </button>
           ))}
