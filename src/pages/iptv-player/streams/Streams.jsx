@@ -9,7 +9,8 @@ export default function StreamPage() {
   const [streams, setStreams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [totalItems, setTotalItems] = useState(0 || null);
+  const [totalItems, setTotalItems] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   // react side effects
   // fetch streams api from backend
@@ -19,7 +20,7 @@ export default function StreamPage() {
       try {
         const streams_api_url = "http://localhost:5000/api/iptv-player/streams";
         const response = await axios.get(streams_api_url);
-        console.log({ response });
+        // console.log({ response });
         setStreams(response?.data?.data);
         setTotalItems(response?.data?.length);
         setError(null); // clear previous error
@@ -38,15 +39,28 @@ export default function StreamPage() {
   }, []);
 
   // variables
-  // const totalItems = 50;
+  // const allItems = totalItems;
   const itemsPerPage = 10;
   const numbersOfPages = Math.abs(Math.round(totalItems / itemsPerPage));
+  // const arr = Array(numbersOfPages).fill(numbersOfPages);
+  const arr2 = Array.from({ length: numbersOfPages }, (_, i) => i + 1);
+
+  // handler functions
+  // handle current page
+  const handleCurrentPage = (a) => {
+    //
+    console.log(a);
+    setCurrentPage(a);
+  };
 
   // console
   console.log(totalItems);
   console.log(numbersOfPages);
+  // console.log(arr);
+  console.log(arr2);
+  console.log(currentPage);
 
-  // handle
+  // error handling
 
   if (loading) return <div>loading steams....</div>;
   if (error) return <div>Error:....{error}</div>;
@@ -75,9 +89,18 @@ export default function StreamPage() {
         ))}
       </div>
       {/* pagination */}
-      {
-        
-      }
+      <div className="w-full h-full">
+        <div className="flex flex-row gap-2 flex-wrap">
+          {arr2?.map((a, i) => (
+            <button
+              onClick={() => handleCurrentPage(a)}
+              key={i}
+              className=" border border-red-500  py-2 px-3 ">
+              {a}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
