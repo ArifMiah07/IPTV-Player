@@ -11,6 +11,7 @@ export default function StreamPage() {
   const [error, setError] = useState(null);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [inputRange, setInputRang] = useState(currentPage);
 
   // react side effects
   // fetch streams api from backend
@@ -48,8 +49,17 @@ export default function StreamPage() {
 
   // handler functions
   // handle current page
-  const handleCurrentPage = (a) => {
-    setCurrentPage(a);
+  const handleCurrentPage = (page) => {
+    setCurrentPage(page);
+    setInputRang(page);
+  };
+  // handle GotoPage
+  const handleGotoPage = (e) => {
+    e.preventDefault();
+    const pageNumber = Number(inputRange);
+    if (!isNaN(pageNumber) && pageNumber > 0) {
+      handleCurrentPage(pageNumber);
+    }
   };
 
   // console
@@ -75,8 +85,45 @@ export default function StreamPage() {
       {/* <ClockPage /> */}
       <h1>this is IPTV Streaming page</h1>
       <div className=" border border-red-500 flex flex-row gap-3 p-3 w-full">
-        <div>
-          <p className={`text-lg font-black `}>{currentPage}</p>
+        {/* basic information and action */}
+        <div className="flex flex-row gap-4">
+          {/* show current page */}
+          <p className={`text-lg font-md bg-green-400 px-4 py-2 rounded-sm `}>
+            Current Page: {currentPage}
+          </p>
+          {/* next page btn */}
+          <button
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+            disabled={currentPage >= numbersOfPages}
+            className="text-lg font-md bg-green-400 px-4 py-2 rounded-sm">
+            Next Page
+          </button>
+          {/* previous page btn */}
+          <button
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+            disabled={currentPage <= 1}
+            className="text-lg font-md bg-green-400 px-4 py-2 rounded-sm">
+            Previous Page
+          </button>
+          {/* handle go to a specific page with user input */}
+          <div className="text-lg font-md bg-green-400 px-4 py-2 rounded-sm">
+            {/* form */}
+            <form onSubmit={handleGotoPage} className=""></form>
+            {/* take input */}
+            <input
+              className="outline-0"
+              // value={currentPage}
+              onSubmit={(e) => setInputRang(e.target.value)}
+              defaultValue={currentPage}
+              placeholder="Go to a page"
+              type="number"
+              min={1}
+            />
+            {/* go to btn */}
+            <button type="submit" className="">
+              Go
+            </button>
+          </div>
         </div>
       </div>
       <div className="w-full h-full flex flex-col lg:grid lg:grid-cols-5 border-4 border-blue-500 ">
