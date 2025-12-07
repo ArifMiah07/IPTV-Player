@@ -1,5 +1,11 @@
-const PaginationNumbers = ({numbersOfPages, currentPage, handleCurrentPage}) => {
-       const pagesArray = Array.from({ length: numbersOfPages }, (_, i) => i + 1);
+import { useState } from "react";
+
+const PaginationNumbers = ({
+  numbersOfPages,
+  currentPage,
+  handleCurrentPage,
+}) => {
+  const pagesArray = Array.from({ length: currentPage + 9 }, (_, i) => i + 1);
   return (
     <div className="w-full h-full">
       <div className="flex flex-row gap-2 flex-wrap">
@@ -13,6 +19,10 @@ const PaginationNumbers = ({numbersOfPages, currentPage, handleCurrentPage}) => 
             {page}
           </button>
         ))}
+        ...
+        <button className={` border border-red-500  py-2 px-3 `}>
+          {numbersOfPages}
+        </button>
       </div>
     </div>
   );

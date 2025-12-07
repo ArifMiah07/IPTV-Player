@@ -1,5 +1,3 @@
-import useFetchStreams from "../../hooks/useFetchStreams";
-import { usePagination } from "../../hooks/usePagination";
 import BasicControls from "./BasicControls";
 
 const Sidebar = ({
@@ -10,6 +8,10 @@ const Sidebar = ({
   onNext,
   onPrev,
   onGoto,
+  channelsPerPage,
+  channelsInput,
+  setChannelsInput,
+  handleChannelsPerPage,
 }) => {
   // use hooks
   return (
@@ -24,6 +26,10 @@ const Sidebar = ({
           onNext={onNext}
           onPrev={onPrev}
           onGoto={onGoto}
+          channelsPerPage={channelsPerPage}
+          channelsInput={channelsInput}
+          setChannelsInput={setChannelsInput}
+          handleChannelsPerPage={handleChannelsPerPage}
         />
       </div>
       <h3 className="text-lg font-bold mb-4">Filters</h3>

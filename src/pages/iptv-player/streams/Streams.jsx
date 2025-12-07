@@ -22,6 +22,10 @@ export default function StreamPage() {
     handleGotoPage,
     handleNextPage,
     handlePrevPage,
+    channelsPerPage,
+    channelsInput,
+    setChannelsInput,
+    handleChannelsPerPage,
   } = usePagination(totalItems);
 
   // react side effects
@@ -80,6 +84,10 @@ export default function StreamPage() {
           onNext={handleNextPage}
           onPrev={handlePrevPage}
           onGoto={handleGotoPage}
+          channelsPerPage={channelsPerPage}
+          channelsInput={channelsInput}
+          setChannelsInput={setChannelsInput}
+          handleChannelsPerPage={handleChannelsPerPage}
         />
       </div>
       <div className=" border border-red-500 flex flex-row gap-3 p-3 w-full">
@@ -92,6 +100,7 @@ export default function StreamPage() {
         numbersOfPages={numbersOfPages}
         currentPage={currentPage}
         handleCurrentPage={handleCurrentPage}
+        
       />
     </div>
   );
