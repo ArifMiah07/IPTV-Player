@@ -12,7 +12,6 @@ const useFetchStreams = () => {
   const [totalItems, setTotalItems] = useState(0);
 
   // use hooks
-  //   const { streams_api_url } = useUrl();
   // constants
 
   // react side effects
@@ -21,9 +20,7 @@ const useFetchStreams = () => {
     // fetch
     async function fetchStreams() {
       try {
-        // const streams_api_url = "http://localhost:5000/api/iptv-player/streams";
         const response = await axios.get(API_URL.streams_api_url);
-        // console.log({ response });
         setStreams(response?.data?.data);
         setTotalItems(response?.data?.length);
         setError(null); // clear previous error
