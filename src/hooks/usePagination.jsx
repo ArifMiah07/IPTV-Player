@@ -34,6 +34,7 @@ export const usePagination = (totalItems) => {
     }
 
     handleCurrentPage(pageNumber);
+    toast.success(`Showing ${currentPage}'th page`);
   };
 
   // handle next page btn

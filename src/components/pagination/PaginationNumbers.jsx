@@ -5,7 +5,7 @@ const PaginationNumbers = ({
   currentPage,
   handleCurrentPage,
 }) => {
-  const pagesArray = Array.from({ length: currentPage + 9 }, (_, i) => i + 1);
+  const pagesArray = Array.from({ length: 10 }, (_, i) => currentPage + i);
   return (
     <div className="w-full h-full">
       <div className="flex flex-row gap-2 flex-wrap">
@@ -19,7 +19,7 @@ const PaginationNumbers = ({
             {page}
           </button>
         ))}
-        ...
+        <span>{"..."}</span>
         <button className={` border border-red-500  py-2 px-3 `}>
           {numbersOfPages}
         </button>
