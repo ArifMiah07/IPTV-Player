@@ -34,7 +34,7 @@ export const usePagination = (totalItems) => {
     }
 
     handleCurrentPage(pageNumber);
-    toast.success(`Showing ${currentPage}'th page`);
+    toast.success(`Showing ${pageNumber}'th page`);
   };
 
   // handle next page btn
@@ -74,12 +74,11 @@ export const usePagination = (totalItems) => {
     }
     //
     setChannelsPerPage(channelsNumberPerPage);
+    toast.success(`Showing ${channelsNumberPerPage} channels per page`);
 
     // reset to page 10 when changing items per page
     // setCurrentPage(1);
     // setInputRange(1);
-
-    toast.success(`Showing ${channelsNumberPerPage} channels per page`);
   };
   //
 

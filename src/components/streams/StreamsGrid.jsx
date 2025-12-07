@@ -1,3 +1,5 @@
+import { HiViewfinderCircle } from "react-icons/hi2";
+import { MdOutlineStar } from "react-icons/md";
 import ReactPlayer from "react-player";
 
 const StreamsGrid = ({ streams }) => {
@@ -7,7 +9,19 @@ const StreamsGrid = ({ streams }) => {
         <div
           className=" w-full h-full flex flex-col items-center justify-center border border-red-500"
           key={stream_index}>
-          <div className="flex flex-col items-center justify-center border border-green-500  w-full h-full">
+          <div className="w-full flex flex-row gap-2 flex-wrap items-center p-2  ">
+            <span className="">{stream_index + 1}</span>
+            <span>
+              <HiViewfinderCircle />
+            </span>
+            {/* save or locally or save to a playlist <localStorage || default, playlist name> */}
+            {/* <MdOutlineStarBorder /> */}
+            <span>
+              <MdOutlineStar />
+            </span>
+            <span>{""}</span>
+          </div>
+          <div className="w-full h-full flex flex-col border border-green-500  ">
             <ReactPlayer
               // pip={true}
               controls={true}
