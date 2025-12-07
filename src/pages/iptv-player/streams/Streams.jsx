@@ -8,45 +8,18 @@ import useFetchStreams from "../../../hooks/useFetchStreams";
 //
 export default function StreamPage() {
   // react states
-  // const [streams, setStreams] = useState([]);
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null);
-  // const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [inputRange, setInputRang] = useState(currentPage);
+  // use hooks
   const { streams, loading, error, totalItems } = useFetchStreams();
 
   // react side effects
-  // fetch streams api from backend
-  // useEffect(() => {
-  //   // fetch
-  //   async function fetchStreams() {
-  //     try {
-  //       const streams_api_url = "http://localhost:5000/api/iptv-player/streams";
-  //       const response = await axios.get(streams_api_url);
-  //       // console.log({ response });
-  //       setStreams(response?.data?.data);
-  //       setTotalItems(response?.data?.length);
-  //       setError(null); // clear previous error
-  //     } catch (error) {
-  //       //
-  //       console.log(error);
-  //       setError(error.message || "something went wrong!");
-  //     } finally {
-  //       //
-  //       setLoading(false);
-  //       console.log("complete");
-  //     }
-  //   }
-  //   // call
-  //   fetchStreams();
-  // }, []);
+  //
 
   // variables
-  // const allItems = totalItems;
   const itemsPerPage = 10;
   const numbersOfPages = Math.ceil(totalItems / itemsPerPage);
-  const arr2 = Array.from({ length: numbersOfPages }, (_, i) => i + 1);
+  const pagesArray = Array.from({ length: numbersOfPages }, (_, i) => i + 1);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = currentPage * itemsPerPage;
 
@@ -77,7 +50,7 @@ export default function StreamPage() {
   console.log(totalItems);
   console.log(numbersOfPages);
   // console.log(arr);
-  console.log(arr2);
+  console.log(pagesArray);
   console.log(currentPage);
   console.log(isNaN(40));
 
@@ -180,14 +153,14 @@ export default function StreamPage() {
       {/* pagination */}
       <div className="w-full h-full">
         <div className="flex flex-row gap-2 flex-wrap">
-          {arr2?.map((a, i) => (
+          {pagesArray?.map((page, index) => (
             <button
-              onClick={() => handleCurrentPage(a)}
-              key={i}
+              onClick={() => handleCurrentPage(page)}
+              key={index}
               className={` border border-red-500  py-2 px-3 ${
-                a === currentPage ? "bg-green-500" : ""
+                page === currentPage ? "bg-green-500" : ""
               }  `}>
-              {a}
+              {page}
             </button>
           ))}
         </div>

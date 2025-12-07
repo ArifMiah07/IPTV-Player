@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { API_URL } from "../constants/url";
 
 const useFetchStreams = () => {
   // react states
@@ -10,14 +11,18 @@ const useFetchStreams = () => {
   const [error, setError] = useState(null);
   const [totalItems, setTotalItems] = useState(0);
 
+  // use hooks
+  //   const { streams_api_url } = useUrl();
+  // constants
+
   // react side effects
   // fetch streams api from backend
   useEffect(() => {
     // fetch
     async function fetchStreams() {
       try {
-        const streams_api_url = "http://localhost:5000/api/iptv-player/streams";
-        const response = await axios.get(streams_api_url);
+        // const streams_api_url = "http://localhost:5000/api/iptv-player/streams";
+        const response = await axios.get(API_URL.streams_api_url);
         // console.log({ response });
         setStreams(response?.data?.data);
         setTotalItems(response?.data?.length);
