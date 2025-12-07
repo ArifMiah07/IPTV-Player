@@ -9,3 +9,14 @@ numbers of pages = 5
 ( currentPage * itemsPerPage)
 
 1st page = arr.slice(startIndex, endIndex)
+
+
+
+# Hooks
+
+
+# Components
+
+
+# Functions / Utils
+

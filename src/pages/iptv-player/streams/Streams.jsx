@@ -3,47 +3,49 @@ import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import ClockPage from "../../../components/clock/clock";
 import { toast, Toaster } from "sonner";
+import useFetchStreams from "../../../hooks/useFetchStreams";
 
 //
 export default function StreamPage() {
   // react states
-  const [streams, setStreams] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [totalItems, setTotalItems] = useState(0);
+  // const [streams, setStreams] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
+  // const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [inputRange, setInputRang] = useState(currentPage);
+  const { streams, loading, error, totalItems } = useFetchStreams();
 
   // react side effects
   // fetch streams api from backend
-  useEffect(() => {
-    // fetch
-    async function fetchStreams() {
-      try {
-        const streams_api_url = "http://localhost:5000/api/iptv-player/streams";
-        const response = await axios.get(streams_api_url);
-        // console.log({ response });
-        setStreams(response?.data?.data);
-        setTotalItems(response?.data?.length);
-        setError(null); // clear previous error
-      } catch (error) {
-        //
-        console.log(error);
-        setError(error.message || "something went wrong!");
-      } finally {
-        //
-        setLoading(false);
-        console.log("complete");
-      }
-    }
-    // call
-    fetchStreams();
-  }, []);
+  // useEffect(() => {
+  //   // fetch
+  //   async function fetchStreams() {
+  //     try {
+  //       const streams_api_url = "http://localhost:5000/api/iptv-player/streams";
+  //       const response = await axios.get(streams_api_url);
+  //       // console.log({ response });
+  //       setStreams(response?.data?.data);
+  //       setTotalItems(response?.data?.length);
+  //       setError(null); // clear previous error
+  //     } catch (error) {
+  //       //
+  //       console.log(error);
+  //       setError(error.message || "something went wrong!");
+  //     } finally {
+  //       //
+  //       setLoading(false);
+  //       console.log("complete");
+  //     }
+  //   }
+  //   // call
+  //   fetchStreams();
+  // }, []);
 
   // variables
   // const allItems = totalItems;
   const itemsPerPage = 10;
-  const numbersOfPages = Math.abs(Math.round(totalItems / itemsPerPage)) + 1;
+  const numbersOfPages = Math.ceil(totalItems / itemsPerPage);
   const arr2 = Array.from({ length: numbersOfPages }, (_, i) => i + 1);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = currentPage * itemsPerPage;
