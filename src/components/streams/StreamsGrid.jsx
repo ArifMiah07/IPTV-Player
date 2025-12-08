@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { HiViewfinderCircle } from "react-icons/hi2";
-import { MdOutlineStar } from "react-icons/md";
+import { MdOutlineStar, MdOutlineStarBorder } from "react-icons/md";
 import ReactPlayer from "react-player";
+import { Link } from "react-router-dom";
 
 /* @props const streams_type = {
   channel: null,
@@ -14,6 +16,29 @@ import ReactPlayer from "react-player";
 */
 
 const StreamsGrid = ({ streams, currentPage, channelsPerPage }) => {
+  // react states
+  const [specificChannelStream, setSpecificChannelStream] = useState({});
+  const [bookmarks, setBookmark] = useState({});
+  // const [specificChannelParams, setSpecificChannelParams] = useState({});
+
+  // handler functions
+  // handle a specific channels stream
+  const handleSpecificChannelStream = (channelInfo) => {
+    setSpecificChannelStream(channelInfo);
+    // setSpecificChannelParams(channelInfo);
+  };
+  // console.log(specificChannelParams);
+  // handle bookmark toggle
+  const handleBookmarkToggle = (streamUrl) => {
+    setBookmark((prev) => ({
+      ...prev,
+      [streamUrl]: !prev[streamUrl],
+    }));
+  };
+
+  // console
+  console.log(specificChannelStream);
+
   return (
     <div className=" w-full h-full col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 items-center justify-items-center gap-4 p-4  ">
       {streams?.map((stream_item, stream_index) => (
@@ -21,22 +46,48 @@ const StreamsGrid = ({ streams, currentPage, channelsPerPage }) => {
           className=" w-full h-full flex flex-col items-center justify-center border border-rose-50 bg-radial-[at_50%_75%] from-sky-100 via-violet-100 to-fuchsia-100 to-90%"
           key={stream_index}>
           <div className="w-full flex flex-col flex-wrap">
+            {/* channel info */}
             <div className="flex gap-2 px-2">
+              {/* channel number */}
               <span className="font-medium">
                 {(currentPage - 1) * channelsPerPage + (stream_index + 1)}.
               </span>
+              {/* channel name or title */}
               <p>
-                {stream_item.channel ? stream_item.channel : stream_item.title}
+                {stream_item?.channel ? stream_item.channel : stream_item.title}
               </p>
             </div>
+            {/* basic actions */}
             <div className="w-full flex flex-row gap-2 flex-wrap items-center p-2  ">
-              <span>
-                <HiViewfinderCircle />
+              {/* stream a specific channel */}
+              <span
+                onClick={() => handleSpecificChannelStream({ stream_item })}
+                className=" flex flex-col items-center justify-center rounded-sm bg-purple-200 hover:bg-purple-300 w-6 h-6 ">
+                <Link
+                  to={`/home/iptv-player/specific-channel/${
+                    (currentPage - 1) * channelsPerPage + (stream_index + 1)
+                  }/${encodeURIComponent(
+                    stream_item.channel || stream_item.title
+                  )}`}
+                  state={{ streamData: stream_item }}>
+                  {/* /${
+                    stream_item.channel
+                      ? stream_item.channel
+                      : stream_item.title
+                  } */}
+                  <HiViewfinderCircle className="" />
+                </Link>
               </span>
+              {/* bookmark a specific channel */}
               {/* save or locally or save to a playlist <localStorage || default, playlist name> */}
-              {/* <MdOutlineStarBorder /> */}
-              <span>
-                <MdOutlineStar />
+              <span
+                onClick={() => handleBookmarkToggle(stream_item.url)}
+                className=" flex flex-col items-center justify-center rounded-sm bg-purple-200 hover:bg-purple-300 w-6 h-6 ">
+                {bookmarks[stream_item.url] ? (
+                  <MdOutlineStar />
+                ) : (
+                  <MdOutlineStarBorder />
+                )}
               </span>
               <span>{""}</span>
             </div>
