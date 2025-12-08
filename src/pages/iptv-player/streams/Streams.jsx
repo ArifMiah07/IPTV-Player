@@ -58,18 +58,9 @@ export default function StreamPage() {
       {/* toast */}
       <Toaster richColors position="top-right" />
       {/* <ClockPage /> */}
-      <h1>this is IPTV Streaming page</h1>
-      <div className=" border border-red-500 flex flex-row gap-3 p-3 w-full">
+      <h1 className="text-lg font-normal">Iptv player {">"} Streaming</h1>
+      <div className="  flex flex-row gap-3 p-3 w-full">
         {/* basic information and action */}
-        {/* <PaginationControls
-          currentPage={currentPage}
-          numbersOfPages={numbersOfPages}
-          inputRange={inputRange}
-          setInputRange={setInputRange}
-          onNext={handleNextPage}
-          onPrev={handlePrevPage}
-          onGoto={handleGotoPage}
-        /> */}
       </div>
       {/* main content */}
       <div className="w-full h-full flex flex-col lg:grid lg:grid-cols-5 border-4 border-blue-500 ">
@@ -100,7 +91,6 @@ export default function StreamPage() {
         numbersOfPages={numbersOfPages}
         currentPage={currentPage}
         handleCurrentPage={handleCurrentPage}
-        
       />
     </div>
   );
