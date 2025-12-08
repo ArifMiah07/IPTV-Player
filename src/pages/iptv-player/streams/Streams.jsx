@@ -65,7 +65,11 @@ export default function StreamPage() {
       {/* main content */}
       <div className="w-full h-full flex flex-col lg:grid lg:grid-cols-5 ">
         {/* streams grid */}
-        <StreamsGrid streams={paginatedStreams} />
+        <StreamsGrid
+          streams={paginatedStreams}
+          currentPage={currentPage}
+          channelsPerPage={channelsPerPage}
+        />
         {/* sidebar */}
         <Sidebar
           currentPage={currentPage}
@@ -79,6 +83,7 @@ export default function StreamPage() {
           channelsInput={channelsInput}
           setChannelsInput={setChannelsInput}
           handleChannelsPerPage={handleChannelsPerPage}
+          totalChannels={totalItems}
         />
       </div>
       <div className=" flex flex-row gap-3 p-3 w-full">

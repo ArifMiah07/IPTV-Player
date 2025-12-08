@@ -15,6 +15,7 @@ const Sidebar = ({
   channelsInput,
   setChannelsInput,
   handleChannelsPerPage,
+  totalChannels,
 }) => {
   // react states
   const [expandBasicControls, setExpandBasicControls] = useState(false);
@@ -29,7 +30,7 @@ const Sidebar = ({
     <div className="lg:col-span-1 ">
       <div className="w-full border-b-2 border-red-50 ">
         <div className="  w-full h-full flex flex-row items-center justify-start gap-2 mb-4 ">
-          <h3 className="text-lg font-bold ">Basic Controls</h3>
+          <h3 className="text-lg font-bold ">Basic Controls & Info</h3>
           <span onClick={toggleBasicControlsExpand} className="">
             {expandBasicControls ? (
               <MdOutlineExpandLess />
@@ -51,6 +52,7 @@ const Sidebar = ({
             channelsInput={channelsInput}
             setChannelsInput={setChannelsInput}
             handleChannelsPerPage={handleChannelsPerPage}
+            totalChannels={totalChannels}
           />
         </div>
       </div>

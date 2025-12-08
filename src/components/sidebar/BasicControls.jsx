@@ -13,6 +13,7 @@ const BasicControls = ({
   channelsInput,
   setChannelsInput,
   handleChannelsPerPage,
+  totalChannels,
 }) => {
   // react states
 
@@ -20,6 +21,10 @@ const BasicControls = ({
 
   return (
     <div className="flex flex-col gap-4">
+      {/* total channels */}
+      <p className={`w-full text-center border-2 border-red-50 `}>
+        Total Channels: {totalChannels}
+      </p>
       {/* total pages */}
       <p className={`w-full text-center border-2 border-red-50 `}>
         Total Pages: {numbersOfPages}
