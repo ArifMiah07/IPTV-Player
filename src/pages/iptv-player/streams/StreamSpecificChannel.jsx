@@ -13,9 +13,9 @@ const StreamSpecificChannel = () => {
   console.log(channelIndex, channel);
   return (
     <div>
-      <h1>stream a specific channel</h1>
-      <h1>
-        stream channel number : {channelIndex} - {channel}
+      {/* <h1>stream a specific channel</h1> */}
+      <h1 className="font-medium mb-4">
+        streaming : {channelIndex}. {channel}
       </h1>
       <StreamSpecificChannelsDetails streamData={streamData} />
     </div>

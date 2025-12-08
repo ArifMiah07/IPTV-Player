@@ -1,7 +1,7 @@
 import ReactPlayer from "react-player";
 
 const StreamSpecificChannelsDetails = ({ streamData }) => {
-  console.log(streamData.url);
+  //   console.log(streamData.url);
   return (
     <div>
       {/* <h1>StreamSpecificChannelsDetails.jsx</h1> */}
