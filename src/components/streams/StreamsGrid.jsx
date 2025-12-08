@@ -15,14 +15,14 @@ import ReactPlayer from "react-player";
 
 const StreamsGrid = ({ streams }) => {
   return (
-    <div className=" w-full h-full col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 items-center justify-items-center gap-4 p-4 border-4 border-teal-500 ">
+    <div className=" w-full h-full col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 items-center justify-items-center gap-4 p-4  ">
       {streams?.map((stream_item, stream_index) => (
         <div
           className=" w-full h-full flex flex-col items-center justify-center border border-rose-50 bg-radial-[at_50%_75%] from-sky-100 via-violet-100 to-fuchsia-100 to-90%"
           key={stream_index}>
           <div className="w-full flex flex-col flex-wrap">
             <div className="flex gap-2 px-2">
-              <span className="">{stream_index + 1}</span>
+              <span className="font-medium">{stream_index + 1}.</span>
               <p>
                 {stream_item.channel ? stream_item.channel : stream_item.title}
               </p>
