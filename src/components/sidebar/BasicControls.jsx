@@ -21,28 +21,14 @@ const BasicControls = ({
 
   return (
     <div className="flex flex-col gap-4">
-      {/* total channels */}
-      <p className={`w-full text-center border-2 border-red-50 `}>
-        Total Channels: {totalChannels}
-      </p>
-      {/* total pages */}
-      <p className={`w-full text-center border-2 border-red-50 `}>
-        Total Pages: {numbersOfPages}
-      </p>
-      {/* show current page */}
-      <p className={`w-full text-center border-2 border-red-50 `}>
-        Current Page: {currentPage}
-      </p>
-      {/* channels per page */}
-      <p className={`w-full text-center border-2 border-red-50 `}>
-        Channels/page: {channelsPerPage}
-      </p>
       {/* next page btn */}
       <button
         onClick={onNext}
         disabled={currentPage >= numbersOfPages}
-        className={` w-full border-2 border-red-50 ${
-          currentPage >= numbersOfPages ? "text-gray-400" : "text-green-400"
+        className={` w-full border-2 border-red-50 hover:border-2 hover:border-[#ff00ff] text-md  hover:bg-[#a100ff]  ${
+          currentPage >= numbersOfPages
+            ? "text-gray-400"
+            : "text-black hover:text-white"
         } `}>
         Next Page
       </button>
@@ -50,8 +36,8 @@ const BasicControls = ({
       <button
         onClick={onPrev}
         disabled={currentPage <= 1}
-        className={` w-full border-2 border-red-50  ${
-          currentPage <= 1 ? "text-gray-400 " : "text-green-400 "
+        className={` w-full border-2 border-red-50 hover:border-2 hover:border-[#ff00ff] text-md  hover:bg-[#a100ff] ${
+          currentPage <= 1 ? "text-gray-400 " : "text-black hover:text-white "
         } `}>
         Previous Page
       </button>
@@ -59,11 +45,13 @@ const BasicControls = ({
       <div className="w-full ">
         {/* form */}
         <form onSubmit={onGoto} className=" w-full flex flex-col ">
-          <label htmlFor="goto_page">Go to a page</label>
-          <div className="w-full flex flex-row border-2 border-red-50 ">
+          <label htmlFor="goto_page" className="mb-1">
+            Go to a page
+          </label>
+          <div className="w-full flex flex-row  ">
             {/* take input */}
             <input
-              className="outline-0 w-full text-center border-2 border-red-50 "
+              className="outline-0 w-full text-center  border-2 border-red-50 hover:border-2 hover:border-[#ff00ff] text-md  hover:bg-[#a100ff] hover:text-white"
               value={inputRange}
               onChange={(e) => setInputRange(e.target.value)}
               placeholder="Go to a page"
@@ -73,7 +61,12 @@ const BasicControls = ({
             {/* go to btn */}
             <button
               type="submit"
-              className="w-fit px-2 border-2 border-red-50 bg-green-300  ">
+              disabled={inputRange === ""}
+              className={`w-fit px-2  border-2 border-red-50 hover:border-2 hover:border-[#ff00ff] text-md  hover:bg-[#a100ff]  ${
+                inputRange === ""
+                  ? "text-gray-400 "
+                  : "text-black hover:text-white "
+              }  `}>
               Go
             </button>
           </div>
@@ -86,11 +79,13 @@ const BasicControls = ({
           onSubmit={handleChannelsPerPage}
           className=" w-full flex flex-col  ">
           {/* handle numbers of cnl's per page */}
-          <label htmlFor="goto_page">Channels per page</label>
-          <div className="w-full flex flex-row border-2 border-red-50 ">
+          <label htmlFor="goto_page" className="mb-1">
+            Channels per page
+          </label>
+          <div className="w-full flex flex-row  ">
             {/* take input */}
             <input
-              className="outline-0 w-full text-center border-2 border-red-50 "
+              className="outline-0 w-full text-center   border-2 border-red-50 hover:border-2 hover:border-[#ff00ff] text-md  hover:bg-[#a100ff] hover:text-white "
               value={channelsInput}
               onChange={(e) => setChannelsInput(e.target.value)}
               placeholder="Chanls per page"
@@ -100,7 +95,12 @@ const BasicControls = ({
             {/* go to btn */}
             <button
               type="submit"
-              className="w-fit px-2 border-2 border-red-50 bg-green-300  ">
+              disabled={channelsInput === ""}
+              className={`w-fit px-2 border-2 border-red-50 hover:border-2 hover:border-[#ff00ff] text-md  hover:bg-[#a100ff]  ${
+                channelsInput === ""
+                  ? "text-gray-400 "
+                  : "text-black hover:text-white "
+              }  `}>
               Set
             </button>
           </div>

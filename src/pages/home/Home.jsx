@@ -49,7 +49,7 @@ export default function HomePage() {
           <div></div>
         </section> */}
         {/* content */}
-        <section className=" col-span-12 py-12 px-12 border border-green-500">
+        <section className=" col-span-12 py-12 px-12 ">
           {isBaseHome && <FeaturesPage />}
           <Outlet />
         </section>
