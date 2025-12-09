@@ -29,12 +29,6 @@ const router = createHashRouter([
               {
                 path: "streams",
                 element: <StreamPage />,
-                // children: [
-                //   {
-                //     path: "specific-channel",
-                //     element: <div>hi im from streams specific-channel</div>,
-                //   },
-                // ],
               },
               {
                 path: "specific-channel/:channelIndex/:channel",

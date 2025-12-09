@@ -14,7 +14,7 @@ export default function FeaturesPage() {
     getApp: false,
   });
 
-  // 
+  //
   // generic toggle handler
   const toggleSection = (key) => {
     setSections((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -46,7 +46,7 @@ export default function FeaturesPage() {
   }, []);
 
   return (
-    <section className="w-full h-full flex flex-col gap-2.5 ">
+    <section className="w-full h-full flex flex-col gap-2.5 border border-red-500 ">
       {/* welcome message */}
       <AnimatePresence>
         {showWelcome && (

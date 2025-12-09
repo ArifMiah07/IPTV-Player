@@ -54,7 +54,7 @@ export default function StreamPage() {
   // return component
   return (
     // streams page component
-    <div className="w-full h-full">
+    <div className="w-full border border-pink-500">
       {/* toast */}
       <Toaster richColors position="top-right" />
       {/* <ClockPage /> */}
@@ -90,11 +90,13 @@ export default function StreamPage() {
         <div>{/* <p className="text-lg font-black">{currentPage}</p> */}</div>
       </div>
       {/* pagination */}
-      <PaginationNumbers
-        numbersOfPages={numbersOfPages}
-        currentPage={currentPage}
-        handleCurrentPage={handleCurrentPage}
-      />
+      <div className="w-full p-4 border border-red-600 flex flex-row items-center justify-center">
+        <PaginationNumbers
+          numbersOfPages={numbersOfPages}
+          currentPage={currentPage}
+          handleCurrentPage={handleCurrentPage}
+        />
+      </div>
     </div>
   );
 }

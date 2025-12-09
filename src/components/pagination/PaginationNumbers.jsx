@@ -9,20 +9,22 @@ const PaginationNumbers = ({
   const startPage = Math.max(1, currentPage - 4);
   const pagesArray = Array.from({ length: 10 }, (_, i) => startPage + i);
   return (
-    <div className="w-full h-full">
-      <div className="flex flex-row gap-2 flex-wrap">
+    <div className="w-full h-full ">
+      <div className="flex flex-row items-center justify-evenly gap-2 flex-wrap">
         {pagesArray?.map((page, index) => (
           <button
             onClick={() => handleCurrentPage(page)}
             key={index}
-            className={` border border-red-500  py-2 px-3 ${
-              page === currentPage ? "bg-green-500" : ""
+            className={` border border-[#ff00ff] text-lg rounded-sm hover:bg-[#a100ff] hover:text-white  py-2 px-5  ${
+              page === currentPage ? "bg-green-500 text-white" : ""
             }  `}>
             {page}
           </button>
         ))}
         {/* <span>{"..."}</span> */}
-        <button className={` border border-red-500  py-2 px-3 `}>
+        <button
+          disabled
+          className={` bg-green-900 text-white border border-red-500  py-2 px-3 `}>
           ...{numbersOfPages}
         </button>
       </div>
