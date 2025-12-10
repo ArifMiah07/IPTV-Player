@@ -1,0 +1,22 @@
+total items = 50
+items per page = 10
+numbers of pages = 5
+// startIndex
+(1 - 1) * 10 = 0
+(currentPage - 1) * itemsPerPage
+// endIndex
+(1 * 10) = 10
+( currentPage * itemsPerPage)
+
+1st page = arr.slice(startIndex, endIndex)
+
+
+
+# Hooks
+
+
+# Components
+
+
+# Functions / Utils
+

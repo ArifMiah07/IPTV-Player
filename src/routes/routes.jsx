@@ -5,11 +5,14 @@ import LandingPage from "../pages/landing/LandingPage";
 import StreamPage from "../pages/iptv-player/streams/Streams";
 import IPTVPlayerPage from "../pages/iptv-player/IPTVPlayer";
 import DashboardPage from "../pages/dashboard/Dashboard";
+import ErrorPage from "../pages/error-page/ErrorPage";
+import StreamSpecificChannel from "../pages/iptv-player/streams/StreamSpecificChannel";
 
 const router = createHashRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -26,6 +29,10 @@ const router = createHashRouter([
               {
                 path: "streams",
                 element: <StreamPage />,
+              },
+              {
+                path: "specific-channel/:channelIndex/:channel",
+                element: <StreamSpecificChannel />,
               },
               {
                 path: "channels",
@@ -55,11 +62,15 @@ const router = createHashRouter([
           },
           {
             path: "video-downloader",
-            element: <div>this is video downloader page <Outlet /> </div> ,
+            element: (
+              <div>
+                this is video downloader page <Outlet />{" "}
+              </div>
+            ),
             children: [
               {
                 path: "downloads",
-                element: <div>download a video</div> ,
+                element: <div>download a video</div>,
               },
             ],
           },
@@ -71,11 +82,15 @@ const router = createHashRouter([
         children: [
           {
             path: "admin",
-            element: <div>this is admin page <Outlet /> </div> ,
+            element: (
+              <div>
+                this is admin page <Outlet />{" "}
+              </div>
+            ),
             children: [
               {
                 path: "create",
-                element: <div>this is admin dashboard upload page</div> ,
+                element: <div>this is admin dashboard upload page</div>,
               },
               {
                 path: "delete",
@@ -93,11 +108,15 @@ const router = createHashRouter([
           },
           {
             path: "user",
-            element: <div>this is user page <Outlet /> </div> ,
+            element: (
+              <div>
+                this is user page <Outlet />{" "}
+              </div>
+            ),
             children: [
               {
                 path: "create",
-                element: <div>this is user dashboard upload page</div> ,
+                element: <div>this is user dashboard upload page</div>,
               },
               {
                 path: "delete",
@@ -113,7 +132,6 @@ const router = createHashRouter([
               },
             ],
           },
-        
         ],
       },
       {

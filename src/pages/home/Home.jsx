@@ -9,7 +9,7 @@ export default function HomePage() {
 
   const isBaseHome = location.pathname === "/home";
 
-  // console.log(location, isBaseHome);
+  console.log(location, isBaseHome);
 
   // get scrollY position
   useEffect(() => {
@@ -42,21 +42,21 @@ export default function HomePage() {
         </nav>
       </header>
       {/* main content */}
-      <main className=" relative w-full h-full min-h-[calc(200vh-60px)] grid grid-cols-12 ">
+      <main className=" relative w-full h-full min-h-[calc(100vh-60px)] grid grid-cols-12 ">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#ff00ff_0%,#ff00ff_50%,#ffffff_100%)] blur-[300px] opacity-10 -z-10"></div>
         {/* sidebar */}
-        <section className=" col-span-1  ">
+        {/* <section className=" col-span-2  ">
           <div></div>
-        </section>
+        </section> */}
         {/* content */}
-        <section className=" col-span-10">
+        <section className=" col-span-12 py-12 px-12 ">
           {isBaseHome && <FeaturesPage />}
           <Outlet />
         </section>
         {/* right sidebar */}
-        <section className=" col-span-1  ">
+        {/* <section className=" col-span-1  ">
           <div></div>
-        </section>
+        </section> */}
       </main>
     </section>
   );

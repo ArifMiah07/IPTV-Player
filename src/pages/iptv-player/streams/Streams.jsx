@@ -1,71 +1,104 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
-import ClockPage from "../../../components/clock/clock";
+import { Toaster } from "sonner";
+import useFetchStreams from "../../../hooks/useFetchStreams";
+import { usePagination } from "../../../hooks/usePagination";
+// import PaginationControls from "../../../components/pagination/PaginationControls";
+import Sidebar from "../../../components/sidebar/Sidebar";
+import StreamsGrid from "../../../components/streams/StreamsGrid";
+import PaginationNumbers from "../../../components/pagination/PaginationNumbers";
 
 //
 export default function StreamPage() {
   // react states
-  const [streams, setStreams] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  // const [isReady, setIsReady] = useState(false)
+  // use hooks
+  const { streams, loading, error, totalItems } = useFetchStreams();
+  const {
+    currentPage,
+    numbersOfPages,
+    startIndex,
+    endIndex,
+    inputRange,
+    setInputRange,
+    handleCurrentPage,
+    handleGotoPage,
+    handleNextPage,
+    handlePrevPage,
+    channelsPerPage,
+    channelsInput,
+    setChannelsInput,
+    handleChannelsPerPage,
+  } = usePagination(totalItems);
 
   // react side effects
-  // fetch streams api from backend
-  useEffect(() => {
-    // fetch
-    async function fetchStreams() {
-      try {
-        const streams_api_url = "http://localhost:5000/api/iptv-player/streams";
-        const response = await axios.get(streams_api_url);
-        console.log({ response });
-        setStreams(response?.data?.data);
-        setError(null); // clear previous error
-      } catch (error) {
-        //
-        console.log(error);
-        setError(error.message || "something went wrong!");
-      } finally {
-        //
-        setLoading(false);
-        console.log("complete");
-      }
-    }
-    // call
-    fetchStreams();
-  }, []);
+  //
 
+  // variables
+  const paginatedStreams = streams?.slice(startIndex, endIndex);
+
+  // console
+  console.log(totalItems);
+  console.log(numbersOfPages);
+  // console.log(arr);
+  // console.log(pagesArray);
+  console.log(currentPage);
+  // console.log(isNaN(40));
+
+  // error handling
+
+  if (loading) return <div>loading steams....</div>;
   if (error) return <div>Error:....{error}</div>;
 
+  // TODO:
+  // 1. make it responsive later
   //
+
+  // return component
   return (
     // streams page component
-    <div className="w-full h-full">
-      <ClockPage />
-      <h1>this is IPTV Streaming page</h1>
-      {/* <div className=" border border-red-500 flex flex-row gap-3 p-3 w-full"></div> */}
-      <div className="p-4 border border-red-500">
-        {streams.slice(0, 1).map((stream_item, stream_index) => (
-          <div
-            className=" w-full h-full pa-2 border border-red-500"
-            key={stream_index}>
-            {/* <p>Stream index: {stream_index}</p>
-            <p>Stream title: {stream_item.title}</p>
-            <p className=" w-full h-full flex flex-col items-start justify-start break-all">
-              Stream url: {stream_item.url}
-            </p> */}
-            <div className="border border-green-500  w-full h-full">
-              <ReactPlayer pip={true} controls={true} src={stream_item.url} />
-            </div>
-          </div>
-        ))}
+    <div className="w-full  p-2">
+      {/* toast */}
+      <Toaster richColors position="top-right" />
+      {/* <ClockPage /> */}
+      <h1 className="text-lg font-normal">Iptv player {">"} Streaming</h1>
+      <div className="  flex flex-row gap-3 p-3 w-full">
+        {/* basic information and action */}
       </div>
-      {/*  */}
+      {/* main content */}
+      <div className="w-full h-full flex flex-col lg:grid lg:grid-cols-5 ">
+        {/* streams grid */}
+        <StreamsGrid
+          streams={paginatedStreams}
+          currentPage={currentPage}
+          channelsPerPage={channelsPerPage}
+        />
+        {/* sidebar */}
+        <Sidebar
+          currentPage={currentPage}
+          numbersOfPages={numbersOfPages}
+          inputRange={inputRange}
+          setInputRange={setInputRange}
+          onNext={handleNextPage}
+          onPrev={handlePrevPage}
+          onGoto={handleGotoPage}
+          channelsPerPage={channelsPerPage}
+          channelsInput={channelsInput}
+          setChannelsInput={setChannelsInput}
+          handleChannelsPerPage={handleChannelsPerPage}
+          totalChannels={totalItems}
+        />
+      </div>
+      <div className=" flex flex-row gap-3 p-3 w-full">
+        <div>{/* <p className="text-lg font-black">{currentPage}</p> */}</div>
+      </div>
+      {/* pagination */}
+      <div className="w-full p-4 flex flex-row items-center justify-center">
+        <PaginationNumbers
+          numbersOfPages={numbersOfPages}
+          currentPage={currentPage}
+          handleCurrentPage={handleCurrentPage}
+        />
+      </div>
     </div>
   );
 }
-
 
 // i was aiming to solve streaming cors issue in browser by adding a proxy server but after jumping few sites it feels like im too young ooo young for this.

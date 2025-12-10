@@ -19,6 +19,8 @@
 
   /* colors */
   --primary-color: #ff0062;
+  --secondary-color: #a100ff;
+  --third-option-color: #ff00ff;
   /* font family */
   --primary-font: "Inter", sans-serif;
   --secondary-font: "Roboto", sans-serif;
@@ -159,7 +161,7 @@ body {
 }
 .download-now-btn {
   box-shadow: 2px -2px 0px rgba(173, 30, 255, 0.25);
-  background-color: #225DC9;
+  background-color: #225dc9;
   color: #fff;
 }
 
