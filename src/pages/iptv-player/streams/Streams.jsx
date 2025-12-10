@@ -37,9 +37,6 @@ export default function StreamPage() {
     fetchStreams();
   }, []);
 
-  // console.log( "agagaga" ,ReactPlayer.canPlay("http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/659e598ab9adc4000843c574/master.m3u8"));
-
-  if (loading) return <div>loading steams....</div>;
   if (error) return <div>Error:....{error}</div>;
 
   //
