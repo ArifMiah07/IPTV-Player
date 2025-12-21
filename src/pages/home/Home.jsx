@@ -9,7 +9,7 @@ export default function HomePage() {
 
   const isBaseHome = location.pathname === "/home";
 
-  console.log(location, isBaseHome);
+  // console.log(location, isBaseHome);
 
   // get scrollY position
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function HomePage() {
     const handleScrollPosition = () => {
       setScrollPositionY(window.scrollY);
     };
-    console.log(window.scrollY);
+    // console.log(window.scrollY);
     // add
     window.addEventListener("scroll", handleScrollPosition);
     // cleanup

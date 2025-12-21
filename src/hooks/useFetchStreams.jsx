@@ -31,12 +31,12 @@ const useFetchStreams = () => {
         setError(null); // clear previous error
       } catch (error) {
         //
-        console.log(error);
+        // console.log(error);
         setError(error.message || "something went wrong!");
       } finally {
         //
         setLoading(false);
-        console.log("complete");
+        // console.log("complete");
       }
     }
     // call

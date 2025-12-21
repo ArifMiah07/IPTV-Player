@@ -46,11 +46,11 @@ const TestingUrl = () => {
         setConfirmedChannelsPerPage(response?.data?.channelsPerPage);
         setError(null);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         setError(error.message);
       } finally {
         setLoading(false);
-        console.log("complete");
+        // console.log("complete");
       }
     };
 
@@ -61,9 +61,9 @@ const TestingUrl = () => {
   const numbersOfPages = 12000;
   const channelsPerPageLimit = 100;
 
-  console.log("data: ", testingData);
-  console.log("data: ", confirmedCurrentPage);
-  console.log("data: ", confirmedChannelsPerPage);
+  //   console.log("data: ", testingData);
+  //   console.log("data: ", confirmedCurrentPage);
+  //   console.log("data: ", confirmedChannelsPerPage);
   // handler function
 
   //   handle current page
@@ -113,7 +113,7 @@ const TestingUrl = () => {
     }
     toast.success(`Updated Successfully!`);
 
-    console.log("done, submitted");
+    // console.log("done, submitted");
     // handleCurrentPage("");
     // handleChannelsPerPage("");
   };
