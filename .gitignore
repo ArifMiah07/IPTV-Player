@@ -42,3 +42,8 @@ dist-ssr
 
 # OS junk
 Thumbs.db
+
+
+# IDE
+*.swp
+*.swo

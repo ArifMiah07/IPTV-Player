@@ -13,8 +13,6 @@ export default function StreamPage() {
   const {
     currentPage,
     numbersOfPages,
-    startIndex,
-    endIndex,
     inputRange,
     setInputRange,
     handleCurrentPage,
@@ -37,10 +35,10 @@ export default function StreamPage() {
 
   // console
   // console.log(totalItems);
-  console.log(numbersOfPages);
+  // console.log(numbersOfPages);
   // console.log(arr);
   // console.log(pagesArray);
-  console.log(currentPage);
+  // console.log(currentPage);
   // console.log(isNaN(40));
 
   // error handling
