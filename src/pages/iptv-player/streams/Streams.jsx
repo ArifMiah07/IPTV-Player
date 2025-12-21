@@ -1,16 +1,15 @@
 import { Toaster } from "sonner";
 import useFetchStreams from "../../../hooks/useFetchStreams";
-import { usePagination } from "../../../hooks/usePagination";
-// import PaginationControls from "../../../components/pagination/PaginationControls";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import StreamsGrid from "../../../components/streams/StreamsGrid";
 import PaginationNumbers from "../../../components/pagination/PaginationNumbers";
+import { usePagination } from "../../../contexts/PaginationContext";
 
 //
 export default function StreamPage() {
   // react states
   // use hooks
-  const { streams, loading, error, totalItems } = useFetchStreams();
+  const { streams, loading, error } = useFetchStreams();
   const {
     currentPage,
     numbersOfPages,
@@ -26,16 +25,18 @@ export default function StreamPage() {
     channelsInput,
     setChannelsInput,
     handleChannelsPerPage,
-  } = usePagination(totalItems);
+    totalItems,
+    // setTotalItems,
+  } = usePagination();
 
   // react side effects
   //
 
   // variables
-  const paginatedStreams = streams?.slice(startIndex, endIndex);
+  // const paginatedStreams = streams?.slice(startIndex, endIndex);
 
   // console
-  console.log(totalItems);
+  // console.log(totalItems);
   console.log(numbersOfPages);
   // console.log(arr);
   // console.log(pagesArray);
@@ -66,7 +67,7 @@ export default function StreamPage() {
       <div className="w-full h-full flex flex-col lg:grid lg:grid-cols-5 ">
         {/* streams grid */}
         <StreamsGrid
-          streams={paginatedStreams}
+          streams={streams}
           currentPage={currentPage}
           channelsPerPage={channelsPerPage}
         />

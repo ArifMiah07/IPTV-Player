@@ -3,22 +3,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL } from "../constants/url";
-import { usePagination } from "./usePagination";
+import { usePagination } from "../contexts/PaginationContext";
 
 const useFetchStreams = () => {
   // react states
   const [streams, setStreams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [totalItems, setTotalItems] = useState(0);
+  // const [totalItems, setTotalItems] = useState(0);
 
-  const {
-    currentPage,
-    channelsPerPage,
-    numbersOfPages,
-    handleNextPage,
-    handlePrevPage,
-  } = usePagination(totalItems);
+  const { currentPage, channelsPerPage, setTotalItems } = usePagination();
 
   // use hooks
   // constants
@@ -49,7 +43,7 @@ const useFetchStreams = () => {
     fetchStreams();
   }, [currentPage, channelsPerPage]);
 
-  return { streams, loading, error, totalItems };
+  return { streams, loading, error };
 };
 
 export default useFetchStreams;
