@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import TestingUrlLoadingSkeleton from "./TestingUrlLoadingSkeleton";
+import { toast } from "sonner";
+import { Toaster } from "sonner";
 
 const TestingUrl = () => {
   const [testingData, setTestingData] = useState(null);
@@ -9,7 +11,11 @@ const TestingUrl = () => {
   const [error, setError] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageRangeInput, setPageRangeInput] = useState(1);
   const [channelsPerPage, setChannelsPerPage] = useState(10);
+  const [channelsRangeInput, setChannelsRangeInput] = useState(10);
+  const [page, setPage] = useState(currentPage);
+  const [channels, setChannels] = useState(channelsPerPage);
 
   useEffect(() => {
     const fetchTestingUrl = async () => {
@@ -20,6 +26,8 @@ const TestingUrl = () => {
         });
         // console.log(response);
         setTestingData(response?.data?.data);
+        setPage(response?.data?.currentPage);
+        setChannels(response?.data?.channelsPerPage);
         setError(null);
       } catch (error) {
         console.log(error);
@@ -33,12 +41,65 @@ const TestingUrl = () => {
     fetchTestingUrl();
   }, [currentPage, channelsPerPage]);
 
+  //   vars
+  const numbersOfPages = 12000;
+  const channelsPerPageLimit = 100;
+
   console.log("data: ", testingData);
+  console.log("data: ", page);
+  console.log("data: ", channels);
   // handler function
+
+  //   handle current page
+  const handleCurrentPage = (page) => {
+    //
+    setCurrentPage(page);
+    setPageRangeInput(page);
+  };
+  //   handle channels per page
+  const handleChannelsPerPage = (channels) => {
+    //
+    setChannelsPerPage(channels);
+    setChannelsRangeInput(channels);
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    const pageNumber = Number(pageRangeInput);
+    const numberOfChannels = Number(channelsRangeInput);
+
+    let hasError = false;
+
+    if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > numbersOfPages) {
+      //
+      toast.error(`{plz give a 1 to ${numbersOfPages} }`);
+      hasError = true;
+      //   return;
+    }
+    if (
+      isNaN(numberOfChannels) ||
+      numberOfChannels < 1 ||
+      numberOfChannels > channelsPerPageLimit
+    ) {
+      //
+      toast.error(`{plz give a 1 to ${channelsPerPageLimit} }`);
+      hasError = true;
+      //   return;
+    }
+
+    if (hasError) return;
+
+    if (pageNumber !== currentPage) {
+      handleCurrentPage(pageNumber);
+    }
+    if (numberOfChannels !== channelsPerPage) {
+      handleChannelsPerPage(numberOfChannels);
+    }
+    toast.success(`Updated Successfully!`);
+
     console.log("done, submitted");
+    // handleCurrentPage("");
+    // handleChannelsPerPage("");
   };
 
   if (loading) return <TestingUrlLoadingSkeleton />;
@@ -46,9 +107,10 @@ const TestingUrl = () => {
 
   return (
     <div>
+      <Toaster richColors position="top-right" />
       <h1>This is testing Url</h1>
-      <p> current page : {currentPage}</p>
-      <p>channels per page : {channelsPerPage}</p>
+      <p> current page : {page}</p>
+      <p>channels per page : {channels}</p>
       <div>
         data:{" "}
         {testingData ? (
@@ -62,22 +124,32 @@ const TestingUrl = () => {
         )}
       </div>
       <div className="w-full h-full flex flex-col">
-        <form onSubmit={handleFormSubmit} className="flex flex-col" action="">
+        <form onSubmit={handleFormSubmit} className="flex flex-col">
           <div className="flex flex-col">
             <label htmlFor="currentPage">Set Current Page</label>
             <input
-              onChange={(e) => setCurrentPage(e.target.value)}
+              id="currentPage"
+              value={pageRangeInput}
+              onChange={(e) => setPageRangeInput(e.target.value)}
               className="w-1/6 border border-red-400 outline-0 "
               type="text"
+              minLength={1}
             />
           </div>
           <div className="flex flex-col">
             <label htmlFor="channelsPerPage">Set Channels Per Page</label>
             <input
-              onChange={(e) => setChannelsPerPage(e.target.value)}
+              id="channelsPerPage"
+              value={channelsRangeInput}
+              onChange={(e) => setChannelsRangeInput(e.target.value)}
               className="w-1/6 border border-red-400 outline-0 "
               type="text"
+              minLength={1}
+              maxLength={4}
             />
+          </div>
+          <div>
+            <button type="submit"> Update</button>
           </div>
         </form>
       </div>
