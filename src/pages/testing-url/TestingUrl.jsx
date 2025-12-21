@@ -4,18 +4,34 @@ import { useEffect, useState } from "react";
 import TestingUrlLoadingSkeleton from "./TestingUrlLoadingSkeleton";
 import { toast } from "sonner";
 import { Toaster } from "sonner";
+import { useTestingUrl } from "../../contexts/ContextTestingUrl";
 
 const TestingUrl = () => {
+  const {
+    currentPage,
+    setCurrentPage,
+    channelsPerPage,
+    setChannelsPerPage,
+    // server-confirm values
+    confirmedCurrentPage,
+    setConfirmedCurrentPage,
+    confirmedChannelsPerPage,
+    setConfirmedChannelsPerPage,
+  } = useTestingUrl();
+
+  //
   const [testingData, setTestingData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const [currentPage, setCurrentPage] = useState(1);
   const [pageRangeInput, setPageRangeInput] = useState(1);
-  const [channelsPerPage, setChannelsPerPage] = useState(10);
   const [channelsRangeInput, setChannelsRangeInput] = useState(10);
-  const [page, setPage] = useState(currentPage);
-  const [channels, setChannels] = useState(channelsPerPage);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [channelsPerPage, setChannelsPerPage] = useState(10);
+  // const [page, setPage] = useState(currentPage);
+  // const [channels, setChannels] = useState(channelsPerPage);
+
+  //
 
   useEffect(() => {
     const fetchTestingUrl = async () => {
@@ -26,8 +42,8 @@ const TestingUrl = () => {
         });
         // console.log(response);
         setTestingData(response?.data?.data);
-        setPage(response?.data?.currentPage);
-        setChannels(response?.data?.channelsPerPage);
+        setConfirmedCurrentPage(response?.data?.currentPage);
+        setConfirmedChannelsPerPage(response?.data?.channelsPerPage);
         setError(null);
       } catch (error) {
         console.log(error);
@@ -46,8 +62,8 @@ const TestingUrl = () => {
   const channelsPerPageLimit = 100;
 
   console.log("data: ", testingData);
-  console.log("data: ", page);
-  console.log("data: ", channels);
+  console.log("data: ", confirmedCurrentPage);
+  console.log("data: ", confirmedChannelsPerPage);
   // handler function
 
   //   handle current page
@@ -109,8 +125,8 @@ const TestingUrl = () => {
     <div>
       <Toaster richColors position="top-right" />
       <h1>This is testing Url</h1>
-      <p> current page : {page}</p>
-      <p>channels per page : {channels}</p>
+      <p> current page : {confirmedCurrentPage}</p>
+      <p>channels per page : {confirmedChannelsPerPage}</p>
       <div>
         data:{" "}
         {testingData ? (
