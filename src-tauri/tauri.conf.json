@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "iptv-player-client",
+  "productName": "IPTV Player",
   "version": "0.1.0",
   "identifier": "com.cpr.iptv-player-client",
   "build": {
@@ -12,9 +12,11 @@
   "app": {
     "windows": [
       {
-        "title": "iptv-player-client",
-        "width": 800,
-        "height": 600
+        "title": "IPTV Player",
+        "width": 1280,
+        "height": 720,
+        "resizable": true,
+        "fullscreen": false
       }
     ],
     "security": {
@@ -30,6 +32,14 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "linux": {
+      "appimage": {
+        "bundleMediaFramework": true
+      },
+      "deb": {
+        "depends": []
+      }
+    }
   }
 }

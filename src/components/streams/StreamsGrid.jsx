@@ -3,6 +3,7 @@ import { HiViewfinderCircle } from "react-icons/hi2";
 import { MdOutlineStar, MdOutlineStarBorder } from "react-icons/md";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
+import { getProxiedUrl } from "../../constants/url";
 
 /* @props const streams_type = {
   channel: null,
@@ -99,7 +100,7 @@ const StreamsGrid = ({ streams, currentPage, channelsPerPage }) => {
               <ReactPlayer
                 // pip={true}
                 controls={true}
-                src={stream_item.url}
+                src={getProxiedUrl(stream_item.url)}
                 width="100%"
                 height="100%"
               />
