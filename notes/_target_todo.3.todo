@@ -1,0 +1,2 @@
+---fix toast not showing when user updating current page and channels per page input
+---refactor states for streams and variables that is sending from backend
