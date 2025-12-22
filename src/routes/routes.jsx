@@ -8,6 +8,7 @@ import DashboardPage from "../pages/dashboard/Dashboard";
 import ErrorPage from "../pages/error-page/ErrorPage";
 import StreamSpecificChannel from "../pages/iptv-player/streams/StreamSpecificChannel";
 import TestingUrl from "../pages/testing-url/TestingUrl";
+import { StreamList } from "../components/player/StreamList";
 
 const router = createHashRouter([
   {
@@ -34,6 +35,10 @@ const router = createHashRouter([
               {
                 path: "testing-url",
                 element: <TestingUrl />,
+              },
+              {
+                path: "stream-list",
+                element: <StreamList />,
               },
               {
                 path: "specific-channel/:channelIndex/:channel",
